@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 1
+    },
+    "auditLog": "C:\\Users\\cyb3r\\Documents\\GitHub\\streamnetvod\\config\\logs\\.2726c59f244d14cce585f08db6d67c6a712573a3-audit.json",
+    "files": [
+        {
+            "date": 1761385801056,
+            "name": "C:\\Users\\cyb3r\\Documents\\GitHub\\streamnetvod\\config\\logs\\.machinelogs-2025-10-25.json",
+            "hash": "9aed70a7e2a37df14f9986c322f4af30fb4f3457cb7785feebf3803b673b46e1"
+        }
+    ],
+    "hashType": "sha256"
+}

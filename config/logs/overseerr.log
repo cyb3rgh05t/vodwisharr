@@ -1,0 +1,74 @@
+2025-10-25T09:50:04.207Z [info]: Starting StreamNet VOD version 1.37.0 
+2025-10-25T09:50:34.457Z [info][Notifications]: Registered notification agents 
+2025-10-25T09:53:08.152Z [info]: Starting StreamNet VOD version 1.37.0 
+2025-10-25T09:53:35.105Z [info][Notifications]: Registered notification agents 
+2025-10-25T09:54:28.373Z [info]: Starting StreamNet VOD version 1.36.1 
+2025-10-25T09:54:51.017Z [info][Notifications]: Registered notification agents 
+2025-10-25T09:56:51.478Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T09:57:05.180Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T09:57:16.609Z [info][Notifications]: Registered notification agents 
+2025-10-25T09:57:16.635Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T09:57:16.640Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":1,"enabled":true,"isBuiltIn":true,"order":0}}
+2025-10-25T09:57:16.652Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":2,"enabled":true,"isBuiltIn":true,"order":1}}
+2025-10-25T09:57:16.656Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":3,"enabled":true,"isBuiltIn":true,"order":2}}
+2025-10-25T09:57:16.661Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":4,"enabled":true,"isBuiltIn":true,"order":3}}
+2025-10-25T09:57:16.668Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":5,"enabled":true,"isBuiltIn":true,"order":4}}
+2025-10-25T09:57:16.672Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":6,"enabled":true,"isBuiltIn":true,"order":5}}
+2025-10-25T09:57:16.677Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":7,"enabled":true,"isBuiltIn":true,"order":6}}
+2025-10-25T09:57:16.682Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":8,"enabled":true,"isBuiltIn":true,"order":7}}
+2025-10-25T09:57:16.690Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":9,"enabled":true,"isBuiltIn":true,"order":8}}
+2025-10-25T09:57:16.697Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":10,"enabled":true,"isBuiltIn":true,"order":9}}
+2025-10-25T09:57:16.708Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":11,"enabled":true,"isBuiltIn":true,"order":10}}
+2025-10-25T09:57:16.717Z [info][Discover Slider]: Creating built-in discovery slider {"slider":{"type":12,"enabled":true,"isBuiltIn":true,"order":11}}
+2025-10-25T09:57:16.797Z [info][Server]: Server ready on port 5055 
+2025-10-25T09:57:29.917Z [info][Notifications]: Registered notification agents 
+2025-10-25T09:57:29.941Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T09:58:00.013Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-10-25T09:58:24.399Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T09:58:30.352Z [info][Notifications]: Registered notification agents 
+2025-10-25T09:58:30.374Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T09:58:30.439Z [info][Server]: Server ready on port 5055 
+2025-10-25T09:59:00.014Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-10-25T10:00:00.009Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-10-25T10:00:00.018Z [info][Jobs]: Starting scheduled job: Plex Watchlist Sync 
+2025-10-25T10:00:00.026Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-10-25T10:00:00.030Z [info][Plex Scan]: Scan starting {"sessionId":"467e3b4b-e82b-48a8-a319-41eb04203e3b"}
+2025-10-25T10:00:00.035Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
+2025-10-25T10:03:54.635Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T10:04:01.187Z [info][Notifications]: Registered notification agents 
+2025-10-25T10:04:01.209Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T10:04:01.270Z [info][Server]: Server ready on port 5055 
+2025-10-25T10:05:00.014Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-10-25T10:05:00.021Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-10-25T10:05:00.022Z [info][Plex Scan]: Scan starting {"sessionId":"c80cf0ec-1454-4525-bbc3-b35622f3601c"}
+2025-10-25T10:05:00.032Z [error][Plex Scan]: Scan interrupted {"errorMessage":""}
+2025-10-25T10:05:47.249Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T10:05:52.760Z [info][Notifications]: Registered notification agents 
+2025-10-25T10:05:52.783Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T10:05:52.856Z [info][Server]: Server ready on port 5055 
+2025-10-25T10:06:00.703Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T10:06:06.308Z [info][Notifications]: Registered notification agents 
+2025-10-25T10:06:06.331Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T10:06:06.395Z [info][Server]: Server ready on port 5055 
+2025-10-25T10:06:15.971Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T10:06:21.513Z [info][Notifications]: Registered notification agents 
+2025-10-25T10:06:21.537Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T10:06:21.599Z [info][Server]: Server ready on port 5055 
+2025-10-25T10:06:40.650Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T10:06:48.311Z [info][Notifications]: Registered notification agents 
+2025-10-25T10:06:48.362Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T10:07:00.003Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-10-25T10:07:00.008Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-10-25T10:07:25.613Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T10:07:31.462Z [info][Notifications]: Registered notification agents 
+2025-10-25T10:07:31.485Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T10:07:31.561Z [info][Server]: Server ready on port 5055 
+2025-10-25T10:08:00.005Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-10-25T10:08:38.276Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T10:08:43.842Z [info][Notifications]: Registered notification agents 
+2025-10-25T10:08:43.865Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T10:08:43.929Z [info][Server]: Server ready on port 5055 
+2025-10-25T10:08:50.704Z [info]: Starting StreamNet VOD version 1.36.7 
+2025-10-25T10:08:56.482Z [info][Notifications]: Registered notification agents 
+2025-10-25T10:08:56.505Z [info][Jobs]: Scheduled jobs loaded 
+2025-10-25T10:08:56.565Z [info][Server]: Server ready on port 5055 
