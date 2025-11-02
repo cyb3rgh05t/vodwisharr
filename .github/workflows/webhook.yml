@@ -16,8 +16,8 @@ jobs:
           webhook_url: ${{ secrets.WEBHOOK_URL }}
           color: '2105893'
           username: 'Release Changelog'
-          avatar_url: 'https://github.com/cyb3rgh05t/vodwisharr/raw/main/images/webhook.png'
+          avatar_url: 'https://github.com/cyb3rgh05t/vodwisharr/blob/main/public/webhook.png?raw=true'
           content: '||@Announcements||'
           footer_title: 'Changelog'
-          footer_icon_url: 'https://github.com/cyb3rgh05t/vodwisharr/raw/main/images/webhook.png'
+          footer_icon_url: 'https://github.com/cyb3rgh05t/vodwisharr/blob/main/public/webhook.png?raw=true'
           footer_timestamp: true
