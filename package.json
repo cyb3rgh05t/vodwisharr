@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cyb3rgh05t/streamnetvod.git"
+    "url": "https://github.com/cyb3rgh05t/vodwisharr.git"
   },
   "license": "MIT",
   "dependencies": {
@@ -235,7 +235,7 @@
         },
         "imageNames": [
           "sctx/overseerr",
-          "ghcr.io/cyb3rgh05t/streamnetvod"
+          "ghcr.io/cyb3rgh05t/vodwisharr"
         ],
         "platforms": [
           "linux/amd64",

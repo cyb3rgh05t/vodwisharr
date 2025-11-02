@@ -21,7 +21,7 @@ The primary motivation for starting this project was to have an incredibly perfo
 
 Overseerr is an ambitious project. We have already poured a lot of work into this, and have a lot more to do. We need your valuable feedback and help to find and fix bugs. Also, with Overseerr being an open-source project, anyone is welcome to contribute. Contribution includes building new features, patching bugs, translating the application, or even just writing documentation.
 
-If you would like to contribute, please be sure to review our [contribution guidelines](https://github.com/cyb3rgh05t/streamnetvod/blob/develop/CONTRIBUTING.md).
+If you would like to contribute, please be sure to review our [contribution guidelines](https://github.com/cyb3rgh05t/vodwisharr/blob/develop/CONTRIBUTING.md).
 
 # Frequently Asked Questions (FAQ)
 
@@ -53,13 +53,13 @@ Out of the box, Overseerr already fulfills most of the [PWA install criteria](ht
 
 ### Overseerr is amazing! But it is not translated in my language yet! Can I help with translations?
 
-You sure can! We are using [Weblate](https://hosted.weblate.org/engage/overseerr/) for translations. If your language is not listed, please [open a feature request on GitHub](https://github.com/cyb3rgh05t/streamnetvod/issues/new/choose).
+You sure can! We are using [Weblate](https://hosted.weblate.org/engage/overseerr/) for translations. If your language is not listed, please [open a feature request on GitHub](https://github.com/cyb3rgh05t/vodwisharr/issues/new/choose).
 
 ### Where can I find the changelog?
 
 You can find the changelog for your version (stable/`latest`,s or `develop`) in the **Settings &rarr; About** page in your Overseerr instance.
 
-You can alternatively review the [stable release history](https://github.com/cyb3rgh05t/streamnetvod/releases) and [`develop` branch commit history](https://github.com/cyb3rgh05t/streamnetvod/commits/develop) on GitHub.
+You can alternatively review the [stable release history](https://github.com/cyb3rgh05t/vodwisharr/releases) and [`develop` branch commit history](https://github.com/cyb3rgh05t/vodwisharr/commits/develop) on GitHub.
 
 ### Some media is missing from Overseerr that I know is in Plex!
 
@@ -113,7 +113,7 @@ Yes! Please see the [documentation for creating local users](../using-overseerr/
 
 ### Is is possible to set user roles in Overseerr?
 
-Permissions can be configured for each user via the **User List** or their **User Settings** page. The list of assignable permissions is still growing, so if you have any suggestions, [submit a feature request](https://github.com/cyb3rgh05t/streamnetvod/issues/new/choose)!
+Permissions can be configured for each user via the **User List** or their **User Settings** page. The list of assignable permissions is still growing, so if you have any suggestions, [submit a feature request](https://github.com/cyb3rgh05t/vodwisharr/issues/new/choose)!
 
 ## Requests
 
@@ -143,7 +143,7 @@ If you configured a URL base in Sonarr, make sure you have also configured the [
 
 Also, check that you are using Sonarr v3 and that you have configured a default language profile in Overseerr.
 
-Language profile support for Sonarr was added in [v1.20.0](https://github.com/cyb3rgh05t/streamnetvod/releases/tag/v1.20.0) along with a new, _required_ **Language Profile** setting. If series requests are failing, make sure that you have a default language profile configured for each of your Sonarr servers in **Settings &rarr; Services**.
+Language profile support for Sonarr was added in [v1.20.0](https://github.com/cyb3rgh05t/vodwisharr/releases/tag/v1.20.0) along with a new, _required_ **Language Profile** setting. If series requests are failing, make sure that you have a default language profile configured for each of your Sonarr servers in **Settings &rarr; Services**.
 
 ## Notifications
 
@@ -168,7 +168,7 @@ Before seeking assistance, please make sure you have first tried these following
 - **Analyzing** your logs, you just might find the solution yourself!
 - **Searching** the [documentation](../README.md), [installation guide](../getting-started/installation.md), and [FAQs](./faq.md).
 
-If you still have questions after troubleshooting on your own, feel free to ask on [Discord](https://discord.gg/overseerr)! (Please review our [Code of Conduct](https://github.com/cyb3rgh05t/streamnetvod/blob/develop/CODE_OF_CONDUCT.md) before posting.)
+If you still have questions after troubleshooting on your own, feel free to ask on [Discord](https://discord.gg/overseerr)! (Please review our [Code of Conduct](https://github.com/cyb3rgh05t/vodwisharr/blob/develop/CODE_OF_CONDUCT.md) before posting.)
 
 Be sure to also include a link to your logs. (Please see [How can I share my logs?](#how-can-i-share-my-logs) below.)
 
@@ -215,7 +215,7 @@ User notifications are separate from system notifications, and the available not
 
 ### Application/API Token
 
-[Register an application](https://pushover.net/apps/build) and enter the API token in this field. (You can use one of the [official icons in our GitHub repository](https://github.com/cyb3rgh05t/streamnetvod/tree/develop/public) when configuring the application.)
+[Register an application](https://pushover.net/apps/build) and enter the API token in this field. (You can use one of the [official icons in our GitHub repository](https://github.com/cyb3rgh05t/vodwisharr/tree/develop/public) when configuring the application.)
 
 For more details on registering applications or the API token, please see the [Pushover API documentation](https://pushover.net/api#registration).
 
@@ -250,5 +250,5 @@ Users can customize their personal notification preferences in their own user no
 
 ## Requesting New Notification Agents
 
-If we do not currently support your preferred notification agent, feel free to [submit a feature request on GitHub](https://github.com/cyb3rgh05t/streamnetvod/issues). However, please be sure to search first and confirm that there is not already an existing request for the agent!
+If we do not currently support your preferred notification agent, feel free to [submit a feature request on GitHub](https://github.com/cyb3rgh05t/vodwisharr/issues). However, please be sure to search first and confirm that there is not already an existing request for the agent!
 

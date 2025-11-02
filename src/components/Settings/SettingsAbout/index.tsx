@@ -71,7 +71,7 @@ const SettingsAbout = () => {
             </p>
             <p className="mt-3 text-sm leading-5 md:mt-0 md:ml-6">
               <a
-                href="http://github.com/cyb3rgh05t/streamnetvod"
+                href="http://github.com/cyb3rgh05t/vodwisharr"
                 className="whitespace-nowrap font-medium text-gray-100 transition duration-150 ease-in-out hover:text-white"
                 target="_blank"
                 rel="noreferrer"
@@ -105,8 +105,8 @@ const SettingsAbout = () => {
                 <a
                   href={
                     data.version.startsWith('develop-')
-                      ? `https://github.com/cyb3rgh05t/streamnetvod/compare/${status.commitTag}...develop`
-                      : 'https://github.com/cyb3rgh05t/streamnetvod/releases'
+                      ? `https://github.com/cyb3rgh05t/vodwisharr/compare/${status.commitTag}...develop`
+                      : 'https://github.com/cyb3rgh05t/vodwisharr/releases'
                   }
                   target="_blank"
                   rel="noopener noreferrer"
@@ -122,8 +122,8 @@ const SettingsAbout = () => {
                 <a
                   href={
                     data.version.startsWith('develop-')
-                      ? 'https://github.com/cyb3rgh05t/streamnetvod/commits/develop'
-                      : 'https://github.com/cyb3rgh05t/streamnetvod/releases'
+                      ? 'https://github.com/cyb3rgh05t/vodwisharr/commits/develop'
+                      : 'https://github.com/cyb3rgh05t/vodwisharr/releases'
                   }
                   target="_blank"
                   rel="noopener noreferrer"
@@ -167,12 +167,12 @@ const SettingsAbout = () => {
           </List.Item>
           <List.Item title={intl.formatMessage(messages.githubdiscussions)}>
             <a
-              href="https://github.com/cyb3rgh05t/streamnetvod/discussions"
+              href="https://github.com/cyb3rgh05t/vodwisharr/discussions"
               target="_blank"
               rel="noreferrer"
               className="text-indigo-500 transition duration-300 hover:underline"
             >
-              https://github.com/cyb3rgh05t/streamnetvod/discussions
+              https://github.com/cyb3rgh05t/vodwisharr/discussions
             </a>
           </List.Item>
           <List.Item title="Discord">

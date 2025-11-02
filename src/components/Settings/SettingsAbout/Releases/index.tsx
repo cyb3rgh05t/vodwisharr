@@ -28,7 +28,7 @@ const messages = defineMessages({
 });
 
 const GITHUB_RELEASES_API_URL =
-  'https://api.github.com/repos/cyb3rgh05t/streamnetvod/releases?per_page=20';
+  'https://api.github.com/repos/cyb3rgh05t/vodwisharr/releases?per_page=20';
 
 interface GitHubRelease {
   url: string;

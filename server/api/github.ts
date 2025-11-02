@@ -83,7 +83,7 @@ class GithubAPI extends ExternalAPI {
   } = {}): Promise<GitHubRelease[]> {
     try {
       const data = await this.get<GitHubRelease[]>(
-        '/repos/cyb3rgh05t/streamnetvod/releases',
+        '/repos/cyb3rgh05t/vodwisharr/releases',
         {
           params: {
             per_page: take,
@@ -110,7 +110,7 @@ class GithubAPI extends ExternalAPI {
   } = {}): Promise<GithubCommit[]> {
     try {
       const data = await this.get<GithubCommit[]>(
-        '/repos/cyb3rgh05t/streamnetvod/commits',
+        '/repos/cyb3rgh05t/vodwisharr/commits',
         {
           params: {
             per_page: take,
