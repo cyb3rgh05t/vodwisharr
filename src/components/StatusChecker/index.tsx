@@ -25,7 +25,14 @@ const StatusChecker = () => {
   const { data, error } = useSWR<StatusResponse>('/api/v1/status', {
     refreshInterval: 60 * 1000,
   });
-  const [alertDismissed, setAlertDismissed] = useState(false);
+  const [alertDismissed, setAlertDismissed] = useState(() => {
+    // Check if user has dismissed this specific commit tag
+    if (typeof window !== 'undefined') {
+      const dismissed = sessionStorage.getItem('updateAlertDismissed');
+      return dismissed === process.env.commitTag;
+    }
+    return false;
+  });
 
   useEffect(() => {
     if (!data?.restartRequired) {
@@ -53,6 +60,7 @@ const StatusChecker = () => {
       appear
       show={
         !alertDismissed &&
+        process.env.commitTag !== 'local' &&
         ((hasPermission(Permission.ADMIN) && data.restartRequired) ||
           data.commitTag !== process.env.commitTag)
       }
@@ -63,8 +71,11 @@ const StatusChecker = () => {
           backgroundClickable={false}
           onOk={() => {
             setAlertDismissed(true);
-            if (data.commitTag !== process.env.commitTag) {
-              location.reload();
+            if (typeof window !== 'undefined') {
+              sessionStorage.setItem(
+                'updateAlertDismissed',
+                process.env.commitTag || ''
+              );
             }
           }}
           okText={intl.formatMessage(globalMessages.close)}
@@ -76,7 +87,15 @@ const StatusChecker = () => {
           title={intl.formatMessage(messages.appUpdated, {
             applicationTitle: settings.currentSettings.applicationTitle,
           })}
-          onOk={() => location.reload()}
+          onOk={() => {
+            if (typeof window !== 'undefined') {
+              sessionStorage.setItem(
+                'updateAlertDismissed',
+                process.env.commitTag || ''
+              );
+            }
+            location.reload();
+          }}
           okText={intl.formatMessage(messages.reloadApp, {
             applicationTitle: settings.currentSettings.applicationTitle,
           })}
