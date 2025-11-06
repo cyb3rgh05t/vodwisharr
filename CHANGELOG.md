@@ -1,3 +1,29 @@
+# [1.37.0](https://github.com/cyb3rgh05t/vodwisharr/compare/v1.36.7...v1.37.0) (2025-11-06)
+
+### Bug Fixes
+
+- **ui:** disable update notification popup during local development ([#1](https://github.com/cyb3rgh05t/vodwisharr/issues/1)) ([commit](https://github.com/cyb3rgh05t/vodwisharr/commit/))
+  - Fixed infinite update popup loop when running in development mode
+  - Update notifications now only show in production builds with valid commit tags
+  - Added sessionStorage to prevent repeated notifications for same version
+
+### Features
+
+- **ci:** add commit SHA as build argument in GitHub workflow ([#2](https://github.com/cyb3rgh05t/vodwisharr/issues/2)) ([commit](https://github.com/cyb3rgh05t/vodwisharr/commit/))
+  - GitHub releases now include commit SHA for proper version tracking
+  - Simplified Docker image tags (removed redundant major and major.minor tags)
+  - Only creates full version tag (e.g., 1.37.0) and latest tag
+
+### Improvements
+
+- **cleanup:** removed unused documentation and development files
+  - Removed docs folder and related configuration files
+  - Removed Cypress testing framework files
+  - Removed Snap packaging configuration
+  - Removed development tool configs (renovate, commitlint, husky)
+  - Removed contributing and code of conduct files
+  - Kept essential GitHub workflows for releases and container builds
+
 # [1.34.0](https://github.com/cyb3rgh05t/vodwisharr/compare/v1.33.2...v1.34.0) (2025-03-26)
 
 ### Bug Fixes
