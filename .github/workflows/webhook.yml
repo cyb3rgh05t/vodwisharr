@@ -17,7 +17,7 @@ jobs:
           color: '2105893'
           username: 'VODWisharr Release Changelog'
           avatar_url: 'https://github.com/cyb3rgh05t/vodwisharr/blob/main/public/webhook.png?raw=true'
-          content: '||@cyb3rgh05t||'
+          content: '<@408885990971670531> New VODWisharr release published!'
           footer_title: 'Github Changelog'
           footer_icon_url: 'https://github.com/cyb3rgh05t/vodwisharr/blob/main/public/github-webhook.png?raw=true'
           footer_timestamp: true
