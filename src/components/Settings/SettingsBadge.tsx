@@ -9,7 +9,7 @@ const messages = defineMessages({
   experimentalTooltip:
     'Enabling this setting may result in unexpected application behavior',
   restartrequiredTooltip:
-    'StreamNet VOD must be restarted for changes to this setting to take effect',
+    'VODWisharr must be restarted for changes to this setting to take effect',
 });
 
 const SettingsBadge = ({

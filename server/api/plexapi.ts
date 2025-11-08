@@ -124,9 +124,9 @@ class PlexAPI {
       // },
       options: {
         identifier: settings.clientId,
-        product: 'StreamNet VOD',
-        deviceName: 'StreamNet VOD',
-        platform: 'StreamNet VOD',
+        product: 'VODWisharr',
+        deviceName: 'VODWisharr',
+        platform: 'VODWisharr',
       },
     });
   }

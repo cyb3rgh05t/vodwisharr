@@ -177,7 +177,7 @@ export interface NotificationAgentTelegram extends NotificationAgentConfig {
     botUsername?: string;
     botAPI: string;
     chatId: string;
-	messageThreadId: string;
+    messageThreadId: string;
     sendSilently: boolean;
   };
 }
@@ -285,7 +285,7 @@ class Settings {
       vapidPublic: '',
       main: {
         apiKey: '',
-        applicationTitle: 'StreamNet VOD',
+        applicationTitle: 'VODWisharr',
         applicationUrl: '',
         csrfProtection: false,
         cacheImages: false,
@@ -328,7 +328,7 @@ class Settings {
               ignoreTls: false,
               requireTls: false,
               allowSelfSigned: false,
-              senderName: 'StreamNet VOD',
+              senderName: 'VODWisharr',
             },
           },
           discord: {
@@ -359,7 +359,7 @@ class Settings {
             options: {
               botAPI: '',
               chatId: '',
-			  messageThreadId: '',
+              messageThreadId: '',
               sendSilently: false,
             },
           },

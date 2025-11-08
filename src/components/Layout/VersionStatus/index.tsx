@@ -10,8 +10,8 @@ import { defineMessages, useIntl } from 'react-intl';
 import useSWR from 'swr';
 
 const messages = defineMessages({
-  streamdevelop: 'StreamNet VOD Develop',
-  streamstable: 'StreamNet VOD Stable',
+  streamdevelop: 'VODWisharr Develop',
+  streamstable: 'VODWisharr Stable',
   outofdate: 'Out of Date',
   commitsbehind:
     '{commitsBehind} {commitsBehind, plural, one {commit} other {commits}} behind',

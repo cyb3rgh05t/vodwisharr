@@ -16,7 +16,7 @@ const messages = defineMessages({
   agentenabled: 'Enable Agent',
   accessToken: 'Application API Token',
   accessTokenTip:
-    '<ApplicationRegistrationLink>Register an application</ApplicationRegistrationLink> for use with StreamNet VOD',
+    '<ApplicationRegistrationLink>Register an application</ApplicationRegistrationLink> for use with VODWisharr',
   userToken: 'User or Group Key',
   userTokenTip:
     'Your 30-character <UsersGroupsLink>user or group identifier</UsersGroupsLink>',

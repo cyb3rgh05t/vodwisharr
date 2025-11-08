@@ -9,7 +9,7 @@ export interface SettingsContextProps {
 
 const defaultSettings = {
   initialized: false,
-  applicationTitle: 'StreamNet VOD',
+  applicationTitle: 'VODWisharr',
   applicationUrl: '',
   hideAvailable: false,
   localLogin: true,
