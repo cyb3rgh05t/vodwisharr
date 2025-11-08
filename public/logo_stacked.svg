@@ -15,18 +15,18 @@
         fill: url(#linear-gradient);
       }
     </style>
-    <linearGradient id="linear-gradient" x1="52.99" y1="424.29" x2="200.04" y2="266.04" gradientTransform="translate(0 336) scale(1 -1)" gradientUnits="userSpaceOnUse">
+    <linearGradient id="linear-gradient" x1="68.89" y1="830.96" x2="215.94" y2="989.21" gradientTransform="translate(0 -744)" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#fa904f"/>
       <stop offset=".18" stop-color="#ea8a68"/>
       <stop offset=".74" stop-color="#bb79ae"/>
       <stop offset="1" stop-color="#a872ca"/>
     </linearGradient>
-    <linearGradient id="linear-gradient1" x1="69.05" y1="426.37" x2="178.99" y2="271.62" gradientTransform="translate(0 336) scale(1 -1)" gradientUnits="userSpaceOnUse">
+    <linearGradient id="linear-gradient1" x1="84.95" y1="828.88" x2="194.89" y2="983.63" gradientTransform="translate(0 -744)" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#454545"/>
       <stop offset="1" stop-color="#333"/>
     </linearGradient>
   </defs>
-  <path class="st2" d="M237.7-8.1c0,60.86-49.34,110.2-110.2,110.2S17.3,52.76,17.3-8.1s49.34-110.2,110.2-110.2,110.2,49.34,110.2,110.2"/>
-  <circle class="st1" cx="127.5" cy="-8.1" r="92.9"/>
-  <path class="st0" d="M103.9-7.5v-39.7c0-4.1,4.5-6.5,7.9-4.2l29.2,19.4,30.7,20.4c3,2,3,6.5,0,8.5l-30.7,20.4-29.2,19.4c-3.4,2.2-7.9-.2-7.9-4.2V-7.5Z"/>
+  <circle class="st2" cx="143.4" cy="167.15" r="110.2"/>
+  <circle class="st1" cx="143.4" cy="167.15" r="92.9"/>
+  <path class="st0" d="M119.8,167.75v-39.7c0-4.1,4.5-6.5,7.9-4.2l29.2,19.4,30.7,20.4c3,2,3,6.5,0,8.5l-30.7,20.4-29.2,19.4c-3.4,2.2-7.9-.2-7.9-4.2v-40h0Z"/>
 </svg>
