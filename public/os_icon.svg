@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 334.3">
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000">
   <!-- Generator: Adobe Illustrator 29.6.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 9)  -->
   <defs>
     <style>
@@ -15,18 +15,18 @@
         fill: url(#linear-gradient);
       }
     </style>
-    <linearGradient id="linear-gradient" x1="68.89" y1="830.96" x2="215.94" y2="989.21" gradientTransform="translate(0 -744)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fa904f"/>
-      <stop offset=".18" stop-color="#ea8a68"/>
-      <stop offset=".74" stop-color="#bb79ae"/>
-      <stop offset="1" stop-color="#a872ca"/>
+    <linearGradient id="linear-gradient" x1="-16.6" y1="-253.25" x2="603.59" y2="414.21" gradientTransform="translate(202.34 415.04)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f79051"/>
+      <stop offset=".18" stop-color="#e98a68"/>
+      <stop offset=".74" stop-color="#bc7aae"/>
+      <stop offset="1" stop-color="#a174b2"/>
     </linearGradient>
-    <linearGradient id="linear-gradient1" x1="84.95" y1="828.88" x2="194.89" y2="983.63" gradientTransform="translate(0 -744)" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#454545"/>
+    <linearGradient id="linear-gradient1" x1="51.14" y1="-262.02" x2="514.83" y2="390.64" gradientTransform="translate(202.34 415.04)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#464646"/>
       <stop offset="1" stop-color="#333"/>
     </linearGradient>
   </defs>
-  <circle class="st2" cx="143.4" cy="167.15" r="110.2"/>
-  <circle class="st1" cx="143.4" cy="167.15" r="92.9"/>
-  <path class="st0" d="M119.8,167.75v-39.7c0-4.1,4.5-6.5,7.9-4.2l29.2,19.4,30.7,20.4c3,2,3,6.5,0,8.5l-30.7,20.4-29.2,19.4c-3.4,2.2-7.9-.2-7.9-4.2v-40h0Z"/>
+  <circle class="st2" cx="500" cy="500" r="464.77"/>
+  <circle class="st1" cx="500" cy="500" r="391.8"/>
+  <path class="st0" d="M400.45,502.55v-167.43c0-17.3,19-27.43,33.33-17.72l123.17,81.83,129.49,86.03c12.63,8.44,12.63,27.43,0,35.87l-129.49,86.03-123.17,81.83c-14.33,9.29-33.33-.85-33.33-17.72v-168.7h0Z"/>
 </svg>
