@@ -6,9 +6,14 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to use for testing (e.g., test-1.0.0)'
+        description: 'Version to use for testing (e.g., test)'
         required: true
-        default: 'test-1.0.0'
+        default: 'test'
+      force_rebuild:
+        description: 'Force rebuild without cache'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   release:
@@ -33,7 +38,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ github.token }}
+          password: ${{ secrets.PACKAGES }}
 
       - name: Lowercase repository name
         id: repo_name_lowercase
@@ -45,13 +50,13 @@ jobs:
         with:
           images: ghcr.io/${{ env.REPO_NAME_LOWERCASE }} # Image name based on repo owner/name
           tags: |
-            type=semver,pattern={{version}}
+            type=semver,pattern={{version}},enable=${{ github.event_name == 'release' }}
             type=raw,value=latest,enable={{is_default_branch}}
-            # Use the manually provided version when triggered via workflow_dispatch
-            ${{ github.event_name == 'workflow_dispatch' && format('type=raw,value={0}', github.event.inputs.version) || '' }}
+            type=ref,event=branch
+            type=raw,value=${{ github.event.inputs.version }},enable=${{ github.event_name == 'workflow_dispatch' }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64,linux/arm64 # Build for amd64 and arm64
