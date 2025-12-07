@@ -41,7 +41,10 @@ export class MediaSubscriber implements EntitySubscriberInterface<Media> {
           const tmdb = new TheMovieDb();
 
           try {
-            const movie = await tmdb.getMovie({ movieId: entity.tmdbId, language: 'de' });
+            const movie = await tmdb.getMovie({
+              movieId: entity.tmdbId,
+              language: 'de',
+            });
 
             relatedRequests.forEach((request) => {
               notificationManager.sendNotification(
@@ -104,39 +107,64 @@ export class MediaSubscriber implements EntitySubscriberInterface<Media> {
       (seasonNumber) => !oldAvailableSeasons.includes(seasonNumber)
     );
 
-    if (changedSeasons.length > 0) {
+    // Only proceed if there are newly available seasons OR if the media just became fully available
+    // The second condition catches cases where seasons were already marked available but the overall
+    // media status just changed to AVAILABLE (meaning all requested content is ready)
+    const mediaJustBecameAvailable =
+      entity[is4k ? 'status4k' : 'status'] === MediaStatus.AVAILABLE &&
+      dbEntity[is4k ? 'status4k' : 'status'] !== MediaStatus.AVAILABLE;
+
+    if (changedSeasons.length > 0 || mediaJustBecameAvailable) {
       const tmdb = new TheMovieDb();
       const requestRepository = getRepository(MediaRequest);
-      const processedSeasons: number[] = [];
+      const processedRequests: number[] = [];
 
-      for (const changedSeasonNumber of changedSeasons) {
-        const requests = await requestRepository.find({
-          where: {
-            media: {
-              id: entity.id,
-            },
-            is4k,
-            status: Not(MediaRequestStatus.DECLINED),
+      // Get all requests for this media
+      const requests = await requestRepository.find({
+        where: {
+          media: {
+            id: entity.id,
           },
-        });
-        const request = requests.find(
-          (request) =>
-            // Check if the season is complete AND it contains the current season that was just marked available
-            request.seasons.every((season) =>
-              newAvailableSeasons.includes(season.seasonNumber)
-            ) &&
-            request.seasons.some(
-              (season) => season.seasonNumber === changedSeasonNumber
-            )
+          is4k,
+          status: Not(MediaRequestStatus.DECLINED),
+        },
+      });
+
+      // Check each request to see if all its seasons are now available
+      for (const request of requests) {
+        // Skip if we already processed this request
+        if (processedRequests.includes(request.id)) {
+          continue;
+        }
+
+        // Check if all seasons in this request are now available
+        const allSeasonsAvailable = request.seasons.every((season) =>
+          newAvailableSeasons.includes(season.seasonNumber)
         );
 
-        if (request && !processedSeasons.includes(changedSeasonNumber)) {
-          processedSeasons.push(
-            ...request.seasons.map((season) => season.seasonNumber)
-          );
+        // Check if at least one of the newly changed seasons belongs to this request
+        const hasChangedSeason = request.seasons.some((season) =>
+          changedSeasons.includes(season.seasonNumber)
+        );
+
+        // Send notification if:
+        // 1. All seasons in the request are now available AND
+        // 2. Either:
+        //    a) At least one of the newly changed seasons is part of this request, OR
+        //    b) The media just transitioned to AVAILABLE status (catches missed notifications)
+        // This ensures we notify when the last season becomes available and also catches
+        // cases where seasons were already available but the notification was missed
+        if (
+          allSeasonsAvailable &&
+          (hasChangedSeason || mediaJustBecameAvailable)
+        ) {
+          processedRequests.push(request.id);
 
           try {
-            const tv = await tmdb.getTvShow({ tvId: entity.tmdbId, language: 'de' });
+            const tv = await tmdb.getTvShow({
+              tvId: entity.tmdbId,
+              language: 'de',
+            });
             notificationManager.sendNotification(Notification.MEDIA_AVAILABLE, {
               event: `${is4k ? '4K ' : ''}Serienanfrage jetzt verfügbar`,
               subject: `${tv.name}${
