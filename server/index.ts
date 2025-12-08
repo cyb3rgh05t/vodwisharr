@@ -38,7 +38,7 @@ import YAML from 'yamljs';
 
 const API_SPEC_PATH = path.join(__dirname, '../overseerr-api.yml');
 
-logger.info(`Starting VODWisharr version ${getAppVersion()}`);
+logger.info(`Starting StreamNet VOD version ${getAppVersion()}`);
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();

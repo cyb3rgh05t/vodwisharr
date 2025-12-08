@@ -1,5 +1,6 @@
 import CompanyCard from '@app/components/CompanyCard';
 import Slider from '@app/components/Slider';
+import { FilmIcon } from '@heroicons/react/24/outline';
 import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
@@ -87,8 +88,11 @@ const StudioSlider = () => {
   return (
     <>
       <div className="slider-header">
-        <div className="slider-title">
-          <span>{intl.formatMessage(messages.studios)}</span>
+        <div className="slider-title group">
+          <FilmIcon className="mr-2 h-7 w-7 text-indigo-400 transition-transform duration-300 group-hover:scale-110" />
+          <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            {intl.formatMessage(messages.studios)}
+          </span>
         </div>
       </div>
       <Slider

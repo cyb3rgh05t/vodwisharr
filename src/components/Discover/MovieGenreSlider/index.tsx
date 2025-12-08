@@ -1,7 +1,10 @@
 import { genreColorMap } from '@app/components/Discover/constants';
 import GenreCard from '@app/components/GenreCard';
 import Slider from '@app/components/Slider';
-import { ArrowRightCircleIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowRightCircleIcon,
+  RectangleStackIcon,
+} from '@heroicons/react/24/outline';
 import type { GenreSliderItem } from '@server/interfaces/api/discoverInterfaces';
 import Link from 'next/link';
 import React from 'react';
@@ -26,8 +29,11 @@ const MovieGenreSlider = () => {
     <>
       <div className="slider-header">
         <Link href="/discover/movies/genres">
-          <a className="slider-title">
-            <span>{intl.formatMessage(messages.moviegenres)}</span>
+          <a className="slider-title group">
+            <RectangleStackIcon className="mr-2 h-7 w-7 text-red-400 transition-transform duration-300 group-hover:scale-110" />
+            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              {intl.formatMessage(messages.moviegenres)}
+            </span>
             <ArrowRightCircleIcon />
           </a>
         </Link>
