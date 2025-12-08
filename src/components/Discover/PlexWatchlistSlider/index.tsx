@@ -1,7 +1,10 @@
 import Slider from '@app/components/Slider';
 import TmdbTitleCard from '@app/components/TitleCard/TmdbTitleCard';
 import { UserType, useUser } from '@app/hooks/useUser';
-import { ArrowRightCircleIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowRightCircleIcon,
+  BookmarkIcon,
+} from '@heroicons/react/24/outline';
 import type { WatchlistItem } from '@server/interfaces/api/discoverInterfaces';
 import Link from 'next/link';
 import { defineMessages, useIntl } from 'react-intl';
@@ -41,8 +44,11 @@ const PlexWatchlistSlider = () => {
     <>
       <div className="slider-header">
         <Link href="/discover/watchlist">
-          <a className="slider-title">
-            <span>{intl.formatMessage(messages.plexwatchlist)}</span>
+          <a className="slider-title group">
+            <BookmarkIcon className="mr-2 h-7 w-7 text-orange-400 transition-transform duration-300 group-hover:scale-110" />
+            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              {intl.formatMessage(messages.plexwatchlist)}
+            </span>
             <ArrowRightCircleIcon />
           </a>
         </Link>

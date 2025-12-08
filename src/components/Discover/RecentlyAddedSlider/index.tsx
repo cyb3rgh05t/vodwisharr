@@ -1,6 +1,7 @@
 import Slider from '@app/components/Slider';
 import TmdbTitleCard from '@app/components/TitleCard/TmdbTitleCard';
 import { Permission, useUser } from '@app/hooks/useUser';
+import { ClockIcon } from '@heroicons/react/24/outline';
 import type { MediaResultsResponse } from '@server/interfaces/api/mediaInterfaces';
 import { defineMessages, useIntl } from 'react-intl';
 import useSWR from 'swr';
@@ -13,7 +14,7 @@ const RecentlyAddedSlider = () => {
   const intl = useIntl();
   const { hasPermission } = useUser();
   const { data: media, error: mediaError } = useSWR<MediaResultsResponse>(
-    '/api/v1/media?filter=allavailable&take=20&sort=mediaAdded',
+    '/api/v1/media?filter=allavailable&take=40&sort=mediaAdded',
     { revalidateOnMount: true }
   );
 
@@ -29,8 +30,11 @@ const RecentlyAddedSlider = () => {
   return (
     <>
       <div className="slider-header">
-        <div className="slider-title">
-          <span>{intl.formatMessage(messages.recentlyAdded)}</span>
+        <div className="slider-title group">
+          <ClockIcon className="mr-2 h-7 w-7 text-yellow-400 transition-transform duration-300 group-hover:scale-110" />
+          <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            {intl.formatMessage(messages.recentlyAdded)}
+          </span>
         </div>
       </div>
       <Slider

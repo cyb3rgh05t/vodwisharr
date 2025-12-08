@@ -67,3 +67,6 @@ tsconfig.tsbuildinfo
 
 # Config Cache Directory
 config/cache
+*.sqlite3
+/config/db
+/config

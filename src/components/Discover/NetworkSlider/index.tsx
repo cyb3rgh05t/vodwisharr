@@ -1,5 +1,6 @@
 import CompanyCard from '@app/components/CompanyCard';
 import Slider from '@app/components/Slider';
+import { TvIcon } from '@heroicons/react/24/outline';
 import { defineMessages, useIntl } from 'react-intl';
 
 const messages = defineMessages({
@@ -153,8 +154,11 @@ const NetworkSlider = () => {
   return (
     <>
       <div className="slider-header">
-        <div className="slider-title">
-          <span>{intl.formatMessage(messages.networks)}</span>
+        <div className="slider-title group">
+          <TvIcon className="mr-2 h-7 w-7 text-purple-400 transition-transform duration-300 group-hover:scale-110" />
+          <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            {intl.formatMessage(messages.networks)}
+          </span>
         </div>
       </div>
       <Slider
