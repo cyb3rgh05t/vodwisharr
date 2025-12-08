@@ -1,3 +1,31 @@
+# [1.40.0](https://github.com/cyb3rgh05t/vodwisharr/compare/v1.37.0...v1.40.0) (2025-12-08)
+
+### Features
+
+- **theme:** integrated theme.park dark theme for enhanced UI aesthetics ([#3](https://github.com/cyb3rgh05t/vodwisharr/issues/3))
+  - Added comprehensive dark theme based on theme.park project
+  - Implemented custom CSS variables for consistent theming across all components
+  - Applied radial gradient background (dark grays to black) for modern visual appeal
+  - Enhanced text contrast and readability with improved color hierarchy
+  - Custom scrollbar styling with theme accent colors
+  - Transparent card backgrounds with proper layering effects
+  - Improved form elements, buttons, and interactive component styling
+
+### Bug Fixes
+
+- **notifications:** fixed TV show notification logic in MediaSubscriber ([#4](https://github.com/cyb3rgh05t/vodwisharr/issues/4))
+  - Fixed request matching logic to ensure all seasons are checked before sending notifications
+  - Added mediaJustBecameAvailable flag to catch status transitions from PARTIALLY_AVAILABLE to AVAILABLE
+  - Resolved issue where Telegram notifications were not sent when TV show seasons became available
+
+### UI Improvements
+
+- **dashboard:** enhanced slider component visual consistency
+  - Added themed icons to all dashboard sliders (Studios, Networks, Recently Added, Recent Requests, Watchlist, Genres)
+  - Applied gradient text effects with color-coded icons for better visual hierarchy
+  - Improved CompanyCard styling to match GenreCard design patterns
+  - Increased Recently Added slider capacity from 20 to 40 items
+
 # [1.37.0](https://github.com/cyb3rgh05t/vodwisharr/compare/v1.36.7...v1.37.0) (2025-11-06)
 
 ### Bug Fixes
