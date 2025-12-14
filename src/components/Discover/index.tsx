@@ -22,8 +22,13 @@ import {
   ArrowDownOnSquareIcon,
   ArrowPathIcon,
   ArrowUturnLeftIcon,
+  CalendarDaysIcon,
+  FilmIcon,
+  FireIcon,
   PencilIcon,
   PlusIcon,
+  RectangleStackIcon,
+  TvIcon,
 } from '@heroicons/react/24/solid';
 import { DiscoverSliderType } from '@server/constants/discover';
 import type DiscoverSlider from '@server/entity/DiscoverSlider';
@@ -225,6 +230,7 @@ const Discover = () => {
                 title={intl.formatMessage(sliderTitles.trending)}
                 url="/api/v1/discover/trending"
                 linkUrl="/discover/trending"
+                icon={<FireIcon className="h-6 w-6 text-red-500" />}
               />
             );
             break;
@@ -235,6 +241,7 @@ const Discover = () => {
                 title={intl.formatMessage(sliderTitles.popularmovies)}
                 url="/api/v1/discover/movies"
                 linkUrl="/discover/movies"
+                icon={<FilmIcon className="h-6 w-6 text-yellow-500" />}
               />
             );
             break;
@@ -249,6 +256,7 @@ const Discover = () => {
                 linkUrl={`/discover/movies?primaryReleaseDateGte=${upcomingDate}`}
                 url="/api/v1/discover/movies"
                 extraParams={`primaryReleaseDateGte=${upcomingDate}`}
+                icon={<CalendarDaysIcon className="h-6 w-6 text-blue-500" />}
               />
             );
             break;
@@ -262,6 +270,7 @@ const Discover = () => {
                 title={intl.formatMessage(sliderTitles.populartv)}
                 url="/api/v1/discover/tv"
                 linkUrl="/discover/tv"
+                icon={<TvIcon className="h-6 w-6 text-purple-500" />}
               />
             );
             break;
@@ -276,6 +285,7 @@ const Discover = () => {
                 linkUrl={`/discover/tv?firstAirDateGte=${upcomingDate}`}
                 url="/api/v1/discover/tv"
                 extraParams={`firstAirDateGte=${upcomingDate}`}
+                icon={<CalendarDaysIcon className="h-6 w-6 text-cyan-500" />}
               />
             );
             break;
@@ -294,6 +304,7 @@ const Discover = () => {
                     : ''
                 }
                 linkUrl={`/discover/movies?keywords=${slider.data}`}
+                icon={<FilmIcon className="h-6 w-6 text-yellow-500" />}
               />
             );
             break;
@@ -309,6 +320,7 @@ const Discover = () => {
                     : ''
                 }
                 linkUrl={`/discover/tv?keywords=${slider.data}`}
+                icon={<TvIcon className="h-6 w-6 text-purple-500" />}
               />
             );
             break;
@@ -320,6 +332,7 @@ const Discover = () => {
                 url={`/api/v1/discover/movies`}
                 extraParams={`genre=${slider.data}`}
                 linkUrl={`/discover/movies?genre=${slider.data}`}
+                icon={<FilmIcon className="h-6 w-6 text-yellow-500" />}
               />
             );
             break;
@@ -331,6 +344,7 @@ const Discover = () => {
                 url={`/api/v1/discover/tv`}
                 extraParams={`genre=${slider.data}`}
                 linkUrl={`/discover/tv?genre=${slider.data}`}
+                icon={<TvIcon className="h-6 w-6 text-purple-500" />}
               />
             );
             break;
@@ -341,6 +355,7 @@ const Discover = () => {
                 title={slider.title ?? ''}
                 url={`/api/v1/discover/movies/studio/${slider.data}`}
                 linkUrl={`/discover/movies/studio/${slider.data}`}
+                icon={<FilmIcon className="h-6 w-6 text-yellow-500" />}
               />
             );
             break;
@@ -351,6 +366,7 @@ const Discover = () => {
                 title={slider.title ?? ''}
                 url={`/api/v1/discover/tv/network/${slider.data}`}
                 linkUrl={`/discover/tv/network/${slider.data}`}
+                icon={<TvIcon className="h-6 w-6 text-purple-500" />}
               />
             );
             break;
@@ -362,6 +378,7 @@ const Discover = () => {
                 url="/api/v1/search"
                 extraParams={`query=${slider.data}`}
                 linkUrl={`/search?query=${slider.data}`}
+                icon={<RectangleStackIcon className="h-6 w-6 text-green-500" />}
               />
             );
             break;
@@ -377,6 +394,7 @@ const Discover = () => {
                 linkUrl={`/discover/movies?watchRegion=${
                   slider.data?.split(',')[0]
                 }&watchProviders=${slider.data?.split(',')[1]}`}
+                icon={<FilmIcon className="h-6 w-6 text-yellow-500" />}
               />
             );
             break;
@@ -392,6 +410,7 @@ const Discover = () => {
                 linkUrl={`/discover/tv?watchRegion=${
                   slider.data?.split(',')[0]
                 }&watchProviders=${slider.data?.split(',')[1]}`}
+                icon={<TvIcon className="h-6 w-6 text-purple-500" />}
               />
             );
             break;

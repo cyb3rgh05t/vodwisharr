@@ -657,12 +657,19 @@ const SettingsPlex = ({ onComplete }: SettingsPlexProps) => {
         </p>
       </div>
       <div className="section">
-        <div className="rounded-md bg-gray-800 p-4">
+        <div
+          className="rounded-md p-4"
+          style={{
+            background: 'rgba(170, 170, 170, 0.1)',
+            border: '1px solid rgba(170, 170, 170, 0.15)',
+          }}
+        >
           <div className="relative mb-6 h-8 w-full overflow-hidden rounded-full bg-gray-600">
             {dataSync?.running && (
               <div
-                className="h-8 bg-indigo-600 transition-all duration-200 ease-in-out"
+                className="h-8 transition-all duration-200 ease-in-out"
                 style={{
+                  background: 'rgba(170, 170, 170, 0.3)',
                   width: `${Math.round(
                     (dataSync.progress / dataSync.total) * 100
                   )}%`,

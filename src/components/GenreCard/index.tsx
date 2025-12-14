@@ -19,10 +19,9 @@ const GenreCard = ({ image, url, name, canExpand = false }: GenreCardProps) => {
         className={`relative flex h-32 items-center justify-center sm:h-36 ${
           canExpand ? 'w-full' : 'w-56 sm:w-72'
         } transform-gpu cursor-pointer p-8 shadow ring-1 transition duration-300 ease-in-out ${
-          isHovered
-            ? 'scale-105 bg-gray-700 bg-opacity-100 ring-gray-500'
-            : 'scale-100 bg-gray-800 bg-opacity-80 ring-gray-700'
+          isHovered ? 'scale-105 ring-gray-500' : 'scale-100 ring-gray-700'
         } overflow-hidden rounded-xl bg-cover bg-center`}
+        style={{ background: 'transparent' }}
         onMouseEnter={() => {
           setHovered(true);
         }}

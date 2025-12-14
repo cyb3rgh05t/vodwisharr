@@ -104,7 +104,16 @@ const SettingsUsers = () => {
           {({ isSubmitting, values, setFieldValue }) => {
             return (
               <Form className="section">
-                <div className="form-row">
+                <div
+                  className="form-row"
+                  style={{
+                    background: 'rgba(170, 170, 170, 0.1)',
+                    padding: '1rem',
+                    borderRadius: '0.5rem',
+                    marginBottom: '1rem',
+                    border: '1px solid rgba(170, 170, 170, 0.15)',
+                  }}
+                >
                   <label htmlFor="localLogin" className="checkbox-label">
                     {intl.formatMessage(messages.localLogin)}
                     <span className="label-tip">
@@ -122,7 +131,16 @@ const SettingsUsers = () => {
                     />
                   </div>
                 </div>
-                <div className="form-row">
+                <div
+                  className="form-row"
+                  style={{
+                    background: 'rgba(170, 170, 170, 0.1)',
+                    padding: '1rem',
+                    borderRadius: '0.5rem',
+                    marginBottom: '1rem',
+                    border: '1px solid rgba(170, 170, 170, 0.15)',
+                  }}
+                >
                   <label htmlFor="newPlexLogin" className="checkbox-label">
                     {intl.formatMessage(messages.newPlexLogin)}
                     <span className="label-tip">
@@ -140,7 +158,16 @@ const SettingsUsers = () => {
                     />
                   </div>
                 </div>
-                <div className="form-row">
+                <div
+                  className="form-row"
+                  style={{
+                    background: 'rgba(170, 170, 170, 0.1)',
+                    padding: '1rem',
+                    borderRadius: '0.5rem',
+                    marginBottom: '1rem',
+                    border: '1px solid rgba(170, 170, 170, 0.15)',
+                  }}
+                >
                   <label htmlFor="applicationTitle" className="text-label">
                     {intl.formatMessage(messages.movieRequestLimitLabel)}
                   </label>
@@ -155,7 +182,16 @@ const SettingsUsers = () => {
                     />
                   </div>
                 </div>
-                <div className="form-row">
+                <div
+                  className="form-row"
+                  style={{
+                    background: 'rgba(170, 170, 170, 0.1)',
+                    padding: '1rem',
+                    borderRadius: '0.5rem',
+                    marginBottom: '1rem',
+                    border: '1px solid rgba(170, 170, 170, 0.15)',
+                  }}
+                >
                   <label htmlFor="applicationTitle" className="text-label">
                     {intl.formatMessage(messages.tvRequestLimitLabel)}
                   </label>
@@ -174,6 +210,13 @@ const SettingsUsers = () => {
                   role="group"
                   aria-labelledby="group-label"
                   className="form-group"
+                  style={{
+                    background: 'rgba(170, 170, 170, 0.1)',
+                    padding: '1rem',
+                    borderRadius: '0.5rem',
+                    marginBottom: '1rem',
+                    border: '1px solid rgba(170, 170, 170, 0.15)',
+                  }}
                 >
                   <div className="form-row">
                     <span id="group-label" className="group-label">

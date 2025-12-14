@@ -177,7 +177,7 @@ const Sidebar = ({
                     <div className="flex flex-shrink-0 items-center px-2">
                       <span className="px-4 text-xl text-gray-50">
                         <a href="/">
-                          <img src="/logo2.png" alt="Logo" />
+                          <img src="/os_icon.png" alt="Logo" />
                         </a>
                       </span>
                     </div>
@@ -247,7 +247,7 @@ const Sidebar = ({
               <div className="flex flex-shrink-0 items-center">
                 <span className="px-4 text-2xl text-gray-50">
                   <a href="/">
-                    <img src="/logo2.png" alt="Logo" />
+                    <img src="/os_icon.png" alt="Logo" />
                   </a>
                 </span>
               </div>

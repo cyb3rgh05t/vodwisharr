@@ -102,9 +102,13 @@ const PermissionOption = ({
   return (
     <>
       <div
-        className={`relative mt-4 flex items-start first:mt-0 ${
-          disabled ? 'opacity-50' : ''
-        }`}
+        className={`relative flex items-start ${disabled ? 'opacity-50' : ''}`}
+        style={{
+          background: 'rgba(170, 170, 170, 0.08)',
+          padding: '0.75rem',
+          borderRadius: '0.375rem',
+          border: '1px solid rgba(170, 170, 170, 0.12)',
+        }}
       >
         <div className="flex h-6 items-center">
           <input
@@ -122,27 +126,33 @@ const PermissionOption = ({
             checked={checked}
           />
         </div>
-        <div className="ml-3 text-sm leading-6">
-          <label htmlFor={option.id} className="block">
+        <div className="ml-3 flex-1 text-sm leading-6">
+          <label htmlFor={option.id} className="block cursor-pointer">
             <div className="flex flex-col">
               <span className="font-medium text-white">{option.name}</span>
-              <span className="font-normal text-gray-400">
+              <span className="text-xs font-normal text-gray-400">
                 {option.description}
               </span>
             </div>
           </label>
         </div>
       </div>
-      {(option.children ?? []).map((child) => (
-        <div key={`permission-child-${child.id}`} className="mt-4 pl-10">
-          <PermissionOption
-            option={child}
-            currentPermission={currentPermission}
-            onUpdate={(newPermission) => onUpdate(newPermission)}
-            parent={option}
-          />
+      {option.children && option.children.length > 0 && (
+        <div
+          className="mt-3 ml-6 grid grid-cols-1 gap-3 pl-4 md:grid-cols-2"
+          style={{ borderLeft: '2px solid rgba(170, 170, 170, 0.2)' }}
+        >
+          {option.children.map((child) => (
+            <PermissionOption
+              key={`permission-child-${child.id}`}
+              option={child}
+              currentPermission={currentPermission}
+              onUpdate={(newPermission) => onUpdate(newPermission)}
+              parent={option}
+            />
+          ))}
         </div>
-      ))}
+      )}
     </>
   );
 };

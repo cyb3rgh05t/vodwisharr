@@ -315,7 +315,7 @@ export const PermissionEdit = ({
   ];
 
   return (
-    <>
+    <div className="space-y-4">
       {permissionList.map((permissionItem) => (
         <PermissionOption
           key={`permission-option-${permissionItem.id}`}
@@ -326,7 +326,7 @@ export const PermissionEdit = ({
           onUpdate={(newPermission) => onUpdate(newPermission)}
         />
       ))}
-    </>
+    </div>
   );
 };
 

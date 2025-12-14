@@ -29,6 +29,7 @@ interface MediaSliderProps {
   hideWhenEmpty?: boolean;
   extraParams?: string;
   onNewTitles?: (titleCount: number) => void;
+  icon?: React.ReactNode;
 }
 
 const MediaSlider = ({
@@ -39,6 +40,7 @@ const MediaSlider = ({
   sliderKey,
   hideWhenEmpty = false,
   onNewTitles,
+  icon,
 }: MediaSliderProps) => {
   const settings = useSettings();
   const { data, error, setSize, size } = useSWRInfinite<MixedResult>(
@@ -150,12 +152,14 @@ const MediaSlider = ({
         {linkUrl ? (
           <Link href={linkUrl}>
             <a className="slider-title min-w-0 pr-16">
+              {icon && <span className="mr-2">{icon}</span>}
               <span className="truncate">{title}</span>
               <ArrowRightCircleIcon />
             </a>
           </Link>
         ) : (
           <div className="slider-title">
+            {icon && <span className="mr-2">{icon}</span>}
             <span>{title}</span>
           </div>
         )}

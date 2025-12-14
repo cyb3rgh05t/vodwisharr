@@ -14,15 +14,22 @@ const CompanyCard = ({ image, url, name }: CompanyCardProps) => {
   return (
     <Link href={url}>
       <a
-        className={`relative flex h-32 w-56 transform-gpu cursor-pointer items-center justify-center p-8 shadow ring-1 transition duration-300 ease-in-out sm:h-36 sm:w-72 ${
-          isHovered
-            ? 'scale-105 bg-gray-700 ring-gray-500'
-            : 'scale-100 bg-gray-800 ring-gray-700'
+        className={`relative flex h-32 w-56 transform-gpu cursor-pointer items-center justify-center p-8 transition duration-300 ease-in-out sm:h-36 sm:w-72 ${
+          isHovered ? 'scale-105' : 'scale-100'
         } rounded-xl`}
+        style={{
+          background: isHovered
+            ? 'rgba(170, 170, 170, 0.2)'
+            : 'rgba(170, 170, 170, 0.1)',
+          boxShadow: 'none',
+          border: 'none',
+        }}
         onMouseEnter={() => {
           setHovered(true);
         }}
-        onMouseLeave={() => setHovered(false)}
+        onMouseLeave={() => {
+          setHovered(false);
+        }}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
             setHovered(true);
@@ -40,11 +47,6 @@ const CompanyCard = ({ image, url, name }: CompanyCardProps) => {
             objectFit="contain"
           />
         </div>
-        <div
-          className={`absolute bottom-0 left-0 right-0 z-0 h-12 rounded-b-xl bg-gradient-to-t ${
-            isHovered ? 'from-gray-800' : 'from-gray-900'
-          }`}
-        />
       </a>
     </Link>
   );

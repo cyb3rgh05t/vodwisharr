@@ -60,7 +60,14 @@ const Release = ({ currentVersion, release, isLatest }: ReleaseProps) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   return (
-    <div className="flex w-full flex-col space-y-3 rounded-md bg-gray-800 px-4 py-2 shadow-md ring-1 ring-gray-700 sm:flex-row sm:space-y-0 sm:space-x-3">
+    <div
+      className="flex w-full flex-col space-y-3 rounded-md px-4 py-2 shadow-md sm:flex-row sm:space-y-0 sm:space-x-3"
+      style={{
+        background: 'rgba(170, 170, 170, 0.15)',
+        border: '1px solid rgba(170, 170, 170, 0.2)',
+        boxShadow: 'none',
+      }}
+    >
       <Transition
         as={Fragment}
         enter="transition-opacity duration-300"
