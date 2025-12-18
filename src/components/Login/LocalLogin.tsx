@@ -13,9 +13,9 @@ import { defineMessages, useIntl } from 'react-intl';
 import * as Yup from 'yup';
 
 const messages = defineMessages({
-  email: 'Email Address',
+  username: 'Username',
   password: 'Password',
-  validationemailrequired: 'You must provide a valid email address',
+  validationusernamerequired: 'You must provide a username',
   validationpasswordrequired: 'You must provide a password',
   loginerror: 'Something went wrong while trying to sign in.',
   signingin: 'Signing In…',
@@ -33,9 +33,9 @@ const LocalLogin = ({ revalidate }: LocalLoginProps) => {
   const [loginError, setLoginError] = useState<string | null>(null);
 
   const LoginSchema = Yup.object().shape({
-    email: Yup.string()
-      .email()
-      .required(intl.formatMessage(messages.validationemailrequired)),
+    username: Yup.string().required(
+      intl.formatMessage(messages.validationusernamerequired)
+    ),
     password: Yup.string().required(
       intl.formatMessage(messages.validationpasswordrequired)
     ),
@@ -48,14 +48,14 @@ const LocalLogin = ({ revalidate }: LocalLoginProps) => {
   return (
     <Formik
       initialValues={{
-        email: '',
+        username: '',
         password: '',
       }}
       validationSchema={LoginSchema}
       onSubmit={async (values) => {
         try {
           await axios.post('/api/v1/auth/local', {
-            email: values.email,
+            email: `${values.username}@mystreamnet.club`,
             password: values.password,
           });
         } catch (e) {
@@ -70,23 +70,22 @@ const LocalLogin = ({ revalidate }: LocalLoginProps) => {
           <>
             <Form>
               <div>
-                <label htmlFor="email" className="text-label">
-                  {intl.formatMessage(messages.email)}
+                <label htmlFor="username" className="text-label">
+                  {intl.formatMessage(messages.username)}
                 </label>
                 <div className="mt-1 mb-2 sm:col-span-2 sm:mt-0">
                   <div className="form-input-field">
                     <Field
-                      id="email"
-                      name="email"
+                      id="username"
+                      name="username"
                       type="text"
-                      inputMode="email"
-                      data-testid="email"
+                      data-testid="username"
                     />
                   </div>
-                  {errors.email &&
-                    touched.email &&
-                    typeof errors.email === 'string' && (
-                      <div className="error">{errors.email}</div>
+                  {errors.username &&
+                    touched.username &&
+                    typeof errors.username === 'string' && (
+                      <div className="error">{errors.username}</div>
                     )}
                 </div>
                 <label htmlFor="password" className="text-label">
