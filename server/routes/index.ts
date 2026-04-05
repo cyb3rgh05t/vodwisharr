@@ -31,6 +31,7 @@ import mediaRoutes from './media';
 import movieRoutes from './movie';
 import personRoutes from './person';
 import requestRoutes from './request';
+import rssRoutes from './rss';
 import searchRoutes from './search';
 import serviceRoutes from './service';
 import tvRoutes from './tv';
@@ -39,6 +40,9 @@ import user from './user';
 const router = Router();
 
 router.use(checkUser);
+
+// RSS feeds use API key via query parameter (no session required)
+router.use('/rss', rssRoutes);
 
 router.get<unknown, StatusResponse>('/status', async (req, res) => {
   const githubApi = new GithubAPI();

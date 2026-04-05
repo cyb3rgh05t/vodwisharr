@@ -13,6 +13,7 @@ const messages = defineMessages({
   menuLogs: 'Logs',
   menuJobs: 'Jobs & Cache',
   menuAbout: 'About',
+  menuRssFeeds: 'RSS Feeds',
 });
 
 type SettingsLayoutProps = {
@@ -47,6 +48,11 @@ const SettingsLayout = ({ children }: SettingsLayoutProps) => {
       text: intl.formatMessage(messages.menuNotifications),
       route: '/settings/notifications/email',
       regex: /^\/settings\/notifications/,
+    },
+    {
+      text: intl.formatMessage(messages.menuRssFeeds),
+      route: '/settings/rss',
+      regex: /^\/settings\/rss/,
     },
     {
       text: intl.formatMessage(messages.menuLogs),
