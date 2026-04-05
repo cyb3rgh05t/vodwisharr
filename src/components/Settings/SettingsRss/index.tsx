@@ -11,6 +11,9 @@ const messages = defineMessages({
   rssfeeds: 'RSS Feeds',
   rssfeedsDescription:
     'Use these RSS feed URLs to subscribe to content updates in your favorite RSS reader. Each URL contains your API key for authentication.',
+  jsonfeeds: 'JSON Feeds',
+  jsonfeedsDescription:
+    'Use these JSON feed URLs to get structured data with TMDB ID, IMDB ID, poster URL, and genre names.',
   trending: 'Trending',
   trendingDescription: 'Currently trending movies and TV shows.',
   popularMovies: 'Popular Movies',
@@ -93,6 +96,34 @@ const SettingsRss = () => {
     },
   ];
 
+  const jsonFeeds = [
+    {
+      label: intl.formatMessage(messages.trending),
+      description: intl.formatMessage(messages.trendingDescription),
+      path: '/api/v1/rss/json/trending',
+    },
+    {
+      label: intl.formatMessage(messages.popularMovies),
+      description: intl.formatMessage(messages.popularMoviesDescription),
+      path: '/api/v1/rss/json/popular-movies',
+    },
+    {
+      label: intl.formatMessage(messages.popularTv),
+      description: intl.formatMessage(messages.popularTvDescription),
+      path: '/api/v1/rss/json/popular-tv',
+    },
+    {
+      label: intl.formatMessage(messages.upcomingMovies),
+      description: intl.formatMessage(messages.upcomingMoviesDescription),
+      path: '/api/v1/rss/json/upcoming-movies',
+    },
+    {
+      label: intl.formatMessage(messages.upcomingTv),
+      description: intl.formatMessage(messages.upcomingTvDescription),
+      path: '/api/v1/rss/json/upcoming-tv',
+    },
+  ];
+
   return (
     <>
       <PageTitle
@@ -121,6 +152,22 @@ const SettingsRss = () => {
           </div>
         </div>
         {feeds.map((feed) => (
+          <RssFeedRow
+            key={feed.path}
+            label={feed.label}
+            description={feed.description}
+            url={`${baseUrl}${feed.path}?apikey=${apiKey}`}
+          />
+        ))}
+      </div>
+      <div className="mb-6 mt-10">
+        <h3 className="heading">{intl.formatMessage(messages.jsonfeeds)}</h3>
+        <p className="description">
+          {intl.formatMessage(messages.jsonfeedsDescription)}
+        </p>
+      </div>
+      <div className="section">
+        {jsonFeeds.map((feed) => (
           <RssFeedRow
             key={feed.path}
             label={feed.label}

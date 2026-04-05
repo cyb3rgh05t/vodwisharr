@@ -1,4 +1,8 @@
 import TheMovieDb from '@server/api/themoviedb';
+import type {
+  TmdbMovieDetails,
+  TmdbTvDetails,
+} from '@server/api/themoviedb/interfaces';
 import { MediaType } from '@server/constants/media';
 import Media from '@server/entity/Media';
 import { getSettings } from '@server/lib/settings';
@@ -372,6 +376,251 @@ rssRoutes.get('/upcoming-tv', async (req, res, next) => {
     return next({
       status: 500,
       message: 'Unable to generate upcoming TV RSS feed.',
+    });
+  }
+});
+
+// =============================================
+// JSON Feed Endpoints
+// =============================================
+
+const TMDB_POSTER_BASE = 'http://image.tmdb.org/t/p/w500';
+
+const formatGenreName = (name: string): string =>
+  name.toLowerCase().replace(/ /g, '_');
+
+const movieDetailsToJson = (movie: TmdbMovieDetails) => ({
+  title: movie.title,
+  tmdb_id: movie.id,
+  imdb_id: movie.imdb_id || null,
+  poster_url: movie.poster_path
+    ? `${TMDB_POSTER_BASE}${movie.poster_path}`
+    : null,
+  genres: movie.genres.map((g) => formatGenreName(g.name)),
+});
+
+const tvDetailsToJson = (tv: TmdbTvDetails) => ({
+  title: tv.name,
+  tmdb_id: tv.id,
+  imdb_id: tv.external_ids?.imdb_id || null,
+  poster_url: tv.poster_path ? `${TMDB_POSTER_BASE}${tv.poster_path}` : null,
+  genres: tv.genres.map((g) => formatGenreName(g.name)),
+});
+
+// =====================
+// JSON: Trending
+// =====================
+rssRoutes.get('/json/trending', async (req, res, next) => {
+  try {
+    const language = (req.query.language as string) || 'de';
+    const tmdb = new TheMovieDb();
+    const data = await tmdb.getAllTrending({ page: 1, language });
+
+    const results = await Promise.all(
+      data.results
+        .filter((r) => !isPerson(r) && !isCollection(r))
+        .map(async (result) => {
+          try {
+            if (isMovie(result)) {
+              const details = await tmdb.getMovie({
+                movieId: result.id,
+                language,
+              });
+              return movieDetailsToJson(details);
+            } else {
+              const details = await tmdb.getTvShow({
+                tvId: result.id,
+                language,
+              });
+              return tvDetailsToJson(details);
+            }
+          } catch {
+            return null;
+          }
+        })
+    );
+
+    return res.status(200).json(results.filter(Boolean));
+  } catch (e) {
+    logger.error('Failed to generate trending JSON feed', {
+      label: 'RSS',
+      errorMessage: e.message,
+    });
+    return next({
+      status: 500,
+      message: 'Unable to generate trending JSON feed.',
+    });
+  }
+});
+
+// =====================
+// JSON: Popular Movies
+// =====================
+rssRoutes.get('/json/popular-movies', async (req, res, next) => {
+  try {
+    const language = (req.query.language as string) || 'de';
+    const tmdb = new TheMovieDb();
+    const data = await tmdb.getDiscoverMovies({
+      page: 1,
+      language,
+      sortBy: 'popularity.desc',
+    });
+
+    const results = await Promise.all(
+      data.results.map(async (result) => {
+        try {
+          const details = await tmdb.getMovie({
+            movieId: result.id,
+            language,
+          });
+          return movieDetailsToJson(details);
+        } catch {
+          return null;
+        }
+      })
+    );
+
+    return res.status(200).json(results.filter(Boolean));
+  } catch (e) {
+    logger.error('Failed to generate popular movies JSON feed', {
+      label: 'RSS',
+      errorMessage: e.message,
+    });
+    return next({
+      status: 500,
+      message: 'Unable to generate popular movies JSON feed.',
+    });
+  }
+});
+
+// =====================
+// JSON: Popular TV
+// =====================
+rssRoutes.get('/json/popular-tv', async (req, res, next) => {
+  try {
+    const language = (req.query.language as string) || 'de';
+    const tmdb = new TheMovieDb();
+    const data = await tmdb.getDiscoverTv({
+      page: 1,
+      language,
+      sortBy: 'popularity.desc',
+    });
+
+    const results = await Promise.all(
+      data.results.map(async (result) => {
+        try {
+          const details = await tmdb.getTvShow({
+            tvId: result.id,
+            language,
+          });
+          return tvDetailsToJson(details);
+        } catch {
+          return null;
+        }
+      })
+    );
+
+    return res.status(200).json(results.filter(Boolean));
+  } catch (e) {
+    logger.error('Failed to generate popular TV JSON feed', {
+      label: 'RSS',
+      errorMessage: e.message,
+    });
+    return next({
+      status: 500,
+      message: 'Unable to generate popular TV JSON feed.',
+    });
+  }
+});
+
+// =====================
+// JSON: Upcoming Movies
+// =====================
+rssRoutes.get('/json/upcoming-movies', async (req, res, next) => {
+  try {
+    const language = (req.query.language as string) || 'de';
+    const tmdb = new TheMovieDb();
+    const now = new Date();
+    const offset = now.getTimezoneOffset();
+    const date = new Date(now.getTime() - offset * 60 * 1000)
+      .toISOString()
+      .split('T')[0];
+
+    const data = await tmdb.getDiscoverMovies({
+      page: 1,
+      language,
+      primaryReleaseDateGte: date,
+    });
+
+    const results = await Promise.all(
+      data.results.map(async (result) => {
+        try {
+          const details = await tmdb.getMovie({
+            movieId: result.id,
+            language,
+          });
+          return movieDetailsToJson(details);
+        } catch {
+          return null;
+        }
+      })
+    );
+
+    return res.status(200).json(results.filter(Boolean));
+  } catch (e) {
+    logger.error('Failed to generate upcoming movies JSON feed', {
+      label: 'RSS',
+      errorMessage: e.message,
+    });
+    return next({
+      status: 500,
+      message: 'Unable to generate upcoming movies JSON feed.',
+    });
+  }
+});
+
+// =====================
+// JSON: Upcoming TV
+// =====================
+rssRoutes.get('/json/upcoming-tv', async (req, res, next) => {
+  try {
+    const language = (req.query.language as string) || 'de';
+    const tmdb = new TheMovieDb();
+    const now = new Date();
+    const offset = now.getTimezoneOffset();
+    const date = new Date(now.getTime() - offset * 60 * 1000)
+      .toISOString()
+      .split('T')[0];
+
+    const data = await tmdb.getDiscoverTv({
+      page: 1,
+      language,
+      firstAirDateGte: date,
+    });
+
+    const results = await Promise.all(
+      data.results.map(async (result) => {
+        try {
+          const details = await tmdb.getTvShow({
+            tvId: result.id,
+            language,
+          });
+          return tvDetailsToJson(details);
+        } catch {
+          return null;
+        }
+      })
+    );
+
+    return res.status(200).json(results.filter(Boolean));
+  } catch (e) {
+    logger.error('Failed to generate upcoming TV JSON feed', {
+      label: 'RSS',
+      errorMessage: e.message,
+    });
+    return next({
+      status: 500,
+      message: 'Unable to generate upcoming TV JSON feed.',
     });
   }
 });
