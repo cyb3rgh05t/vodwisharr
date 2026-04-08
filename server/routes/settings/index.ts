@@ -404,9 +404,9 @@ settingsRoutes.get(
         .forEach((line) => {
           if (!line.length) return;
 
-          let logMessage;
+          let logMessage: LogMessage;
           try {
-            logMessage = JSON.parse(line);
+            logMessage = JSON.parse(line) as LogMessage;
           } catch {
             // Skip malformed JSON lines
             return;
@@ -424,7 +424,11 @@ settingsRoutes.get(
             Object.keys(logMessage)
               .filter((prop) => !logMessageProperties.includes(prop))
               .forEach((prop) => {
-                set(logMessage, `data.${prop}`, logMessage[prop]);
+                set(
+                  logMessage,
+                  `data.${prop}`,
+                  (logMessage as Record<string, unknown>)[prop]
+                );
               });
           }
 
