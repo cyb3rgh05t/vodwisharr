@@ -3,6 +3,25 @@ import path from 'path';
 import * as winston from 'winston';
 import 'winston-daily-rotate-file';
 
+const localTimestamp = winston.format((info) => {
+  info.timestamp =
+    new Date()
+      .toLocaleString('sv-SE', {
+        timeZone: process.env.TZ || 'UTC',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+      })
+      .replace(' ', 'T') +
+    '.' +
+    String(new Date().getMilliseconds()).padStart(3, '0');
+  return info;
+});
+
 // Migrate away from old log
 const OLD_LOG_FILE = path.join(__dirname, '../config/logs/overseerr.log');
 if (fs.existsSync(OLD_LOG_FILE)) {
@@ -29,7 +48,7 @@ const logger = winston.createLogger({
   level: process.env.LOG_LEVEL?.toLowerCase() || 'debug',
   format: winston.format.combine(
     winston.format.splat(),
-    winston.format.timestamp(),
+    localTimestamp(),
     hformat
   ),
   transports: [
@@ -37,7 +56,7 @@ const logger = winston.createLogger({
       format: winston.format.combine(
         winston.format.colorize(),
         winston.format.splat(),
-        winston.format.timestamp(),
+        localTimestamp(),
         hformat
       ),
     }),
@@ -64,7 +83,7 @@ const logger = winston.createLogger({
       symlinkName: '.machinelogs.json',
       format: winston.format.combine(
         winston.format.splat(),
-        winston.format.timestamp(),
+        localTimestamp(),
         winston.format.json()
       ),
     }),

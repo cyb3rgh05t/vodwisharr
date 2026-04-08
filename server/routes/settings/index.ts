@@ -404,7 +404,13 @@ settingsRoutes.get(
         .forEach((line) => {
           if (!line.length) return;
 
-          const logMessage = JSON.parse(line);
+          let logMessage;
+          try {
+            logMessage = JSON.parse(line);
+          } catch {
+            // Skip malformed JSON lines
+            return;
+          }
 
           if (!filter.includes(logMessage.level)) {
             return;
