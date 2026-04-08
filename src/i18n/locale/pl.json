@@ -1223,5 +1223,20 @@
   "components.MovieDetails.imdbuserscore": "Ocena użytkowników IMDB",
   "components.Settings.SonarrModal.seriesType": "Typ serialu",
   "components.Settings.Notifications.NotificationsPushover.sound": "Dzwięk powiadomienia",
-  "components.Discover.FilterSlideover.voteCount": "Liczba głosów pomiędzy {minValue} i {maxValue}"
+  "components.Discover.FilterSlideover.voteCount": "Liczba głosów pomiędzy {minValue} i {maxValue}",
+  "components.IssueDetails.predefinedReplies": "Szybka odpowiedź",
+  "components.IssueDetails.replyFixedLabel": "Problem rozwiązany",
+  "components.IssueDetails.replyFixedMessage": "Zgłoszony problem został rozwiązany. Sprawdź, czy wszystko działa zgodnie z oczekiwaniami. Jeśli problem się powtarza, otwórz nowe zgłoszenie.\n\n!! Tip: Zaktualizuj playlistę !!",
+  "components.IssueDetails.replyInvestigatingLabel": "W trakcie badania",
+  "components.IssueDetails.replyInvestigatingMessage": "Dziękujemy za zgłoszenie. Badamy problem i skontaktujemy się, gdy będziemy mieć więcej informacji.\n\n!! Tip: Zaktualizuj playlistę !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Potrzeba więcej informacji",
+  "components.IssueDetails.replyMoreInfoMessage": "Czy mógłbyś podać więcej szczegółów dotyczących problemu? Na przykład: Jakiego urządzenia/aplikacji używasz? Kiedy problem występuje?\n\n!! Tip: Zaktualizuj playlistę !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Znany problem",
+  "components.IssueDetails.replyKnownIssueMessage": "Jest to znany problem, nad którym już pracujemy. Poinformujemy Cię, gdy zostanie rozwiązany.\n\n!! Tip: Zaktualizuj playlistę !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Nie można odtworzyć",
+  "components.IssueDetails.replyNotReproducibleMessage": "Nie udało nam się odtworzyć zgłoszonego problemu. Sprawdź, czy problem nadal występuje, i zgłoś go ponownie z dodatkowymi szczegółami.\n\n!! Tip: Zaktualizuj playlistę !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Niedawno dodane",
+  "components.IssueDetails.replyNewlyAddedMessage": "Treść została niedawno dodana i powinna być wkrótce dostępna. Prosimy o cierpliwość.\n\n!! Tip: Zaktualizuj playlistę !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplikat",
+  "components.IssueDetails.replyDuplicateMessage": "Ten problem został już zgłoszony w innym zgłoszeniu. Zamykamy go jako duplikat.\n\n!! Tip: Zaktualizuj playlistę !!"
 }

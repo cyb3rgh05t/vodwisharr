@@ -1236,5 +1236,20 @@
   "components.UserProfile.UserSettings.UserNotificationSettings.deviceDefault": "Enhetsstandard",
   "components.UserProfile.UserSettings.UserNotificationSettings.sound": "Notifikationsljud",
   "components.Settings.Notifications.NotificationsPushover.deviceDefault": "Enhetsstandard",
-  "components.Settings.SettingsJobsCache.plex-refresh-token": "Plex uppdateringstoken"
+  "components.Settings.SettingsJobsCache.plex-refresh-token": "Plex uppdateringstoken",
+  "components.IssueDetails.predefinedReplies": "Snabbsvar",
+  "components.IssueDetails.replyFixedLabel": "Problem löst",
+  "components.IssueDetails.replyFixedMessage": "Det rapporterade problemet har lösts. Kontrollera om allt fungerar som förväntat. Om problemet kvarstår, öppna ett nytt ärende.\n\n!! Tip: Uppdatera spellistan !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Undersöker",
+  "components.IssueDetails.replyInvestigatingMessage": "Tack för rapporten. Vi undersöker problemet och återkommer så snart vi har mer information.\n\n!! Tip: Uppdatera spellistan !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Mer information behövs",
+  "components.IssueDetails.replyMoreInfoMessage": "Kan du ge mer information om problemet? Till exempel: Vilken enhet/app använder du? När uppstår problemet?\n\n!! Tip: Uppdatera spellistan !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Känt problem",
+  "components.IssueDetails.replyKnownIssueMessage": "Detta är ett känt problem som det redan arbetas med. Vi meddelar dig när det är löst.\n\n!! Tip: Uppdatera spellistan !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Kan inte återskapas",
+  "components.IssueDetails.replyNotReproducibleMessage": "Vi kunde inte återskapa det rapporterade problemet. Kontrollera om problemet fortfarande finns och rapportera med mer information.\n\n!! Tip: Uppdatera spellistan !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Nyligen tillagt",
+  "components.IssueDetails.replyNewlyAddedMessage": "Innehållet har nyligen lagts till och bör snart vara tillgängligt. Var tålmodig.\n\n!! Tip: Uppdatera spellistan !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplikat",
+  "components.IssueDetails.replyDuplicateMessage": "Detta problem har redan rapporterats i ett annat ärende. Vi stänger detta som duplikat.\n\n!! Tip: Uppdatera spellistan !!"
 }

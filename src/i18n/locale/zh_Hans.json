@@ -1235,5 +1235,20 @@
   "components.Settings.SonarrModal.animeSeriesType": "动漫剧集类型",
   "components.Settings.SonarrModal.seriesType": "剧集类型",
   "components.UserProfile.UserSettings.UserNotificationSettings.sound": "通知提示音",
-  "components.Settings.Notifications.NotificationsPushover.deviceDefault": "默认设备"
+  "components.Settings.Notifications.NotificationsPushover.deviceDefault": "默认设备",
+  "components.IssueDetails.predefinedReplies": "快速回复",
+  "components.IssueDetails.replyFixedLabel": "问题已解决",
+  "components.IssueDetails.replyFixedMessage": "报告的问题已解决。请检查一切是否正常运行。如果问题仍然存在，请创建新的问题。\n\n!! Tip: 更新播放列表 !!",
+  "components.IssueDetails.replyInvestigatingLabel": "调查中",
+  "components.IssueDetails.replyInvestigatingMessage": "感谢您的报告。我们正在调查该问题，一旦有更多信息会尽快回复。\n\n!! Tip: 更新播放列表 !!",
+  "components.IssueDetails.replyMoreInfoLabel": "需要更多信息",
+  "components.IssueDetails.replyMoreInfoMessage": "您能否提供有关该问题的更多详细信息？例如：您使用的是什么设备/应用？问题何时发生？\n\n!! Tip: 更新播放列表 !!",
+  "components.IssueDetails.replyKnownIssueLabel": "已知问题",
+  "components.IssueDetails.replyKnownIssueMessage": "这是一个已知问题，正在处理中。解决后我们会通知您。\n\n!! Tip: 更新播放列表 !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "无法复现",
+  "components.IssueDetails.replyNotReproducibleMessage": "我们无法复现报告的问题。请检查问题是否仍然存在，并提供更多详细信息。\n\n!! Tip: 更新播放列表 !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "最近添加",
+  "components.IssueDetails.replyNewlyAddedMessage": "内容已最近添加，应很快可用。请耐心等待。\n\n!! Tip: 更新播放列表 !!",
+  "components.IssueDetails.replyDuplicateLabel": "重复",
+  "components.IssueDetails.replyDuplicateMessage": "此问题已在另一个问题中报告。我们将其作为重复关闭。\n\n!! Tip: 更新播放列表 !!"
 }

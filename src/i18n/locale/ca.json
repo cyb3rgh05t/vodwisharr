@@ -1236,5 +1236,20 @@
   "components.Settings.RadarrModal.tagRequests": "Sol·licituds d'etiqueta",
   "components.Settings.RadarrModal.tagRequestsInfo": "Automàticament afegeix una etiqueta addicional amb el nom d'usuari i nom complet del sol·licitant",
   "components.Settings.SonarrModal.tagRequestsInfo": "Automàticament afegeix una etiqueta addicional amb el nom d'usuari i nom complet del sol·licitant",
-  "components.Settings.SettingsJobsCache.plex-refresh-token": "Testimoni d'actualització de Plex"
+  "components.Settings.SettingsJobsCache.plex-refresh-token": "Testimoni d'actualització de Plex",
+  "components.IssueDetails.predefinedReplies": "Resposta ràpida",
+  "components.IssueDetails.replyFixedLabel": "Problema resolt",
+  "components.IssueDetails.replyFixedMessage": "El problema reportat s'ha resolt. Si us plau, comproveu si tot funciona com s'esperava. Si el problema persisteix, obriu un nou problema.\n\n!! Tip: Actualitza la llista de reproducció !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Investigant",
+  "components.IssueDetails.replyInvestigatingMessage": "Gràcies per l'informe. Estem investigant el problema i us informarem quan tinguem més informació.\n\n!! Tip: Actualitza la llista de reproducció !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Cal més informació",
+  "components.IssueDetails.replyMoreInfoMessage": "Podríeu proporcionar més detalls sobre el problema? Per exemple: Quin dispositiu/aplicació feu servir? Quan es produeix el problema?\n\n!! Tip: Actualitza la llista de reproducció !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Problema conegut",
+  "components.IssueDetails.replyKnownIssueMessage": "Aquest és un problema conegut en el qual ja s'està treballant. Us informarem quan s'hagi resolt.\n\n!! Tip: Actualitza la llista de reproducció !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "No es pot reproduir",
+  "components.IssueDetails.replyNotReproducibleMessage": "No hem pogut reproduir el problema reportat. Si us plau, comproveu si el problema encara persisteix i informeu amb més detalls.\n\n!! Tip: Actualitza la llista de reproducció !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Afegit recentment",
+  "components.IssueDetails.replyNewlyAddedMessage": "El contingut s'ha afegit recentment i hauria d'estar disponible aviat. Si us plau, tingueu paciència.\n\n!! Tip: Actualitza la llista de reproducció !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplicat",
+  "components.IssueDetails.replyDuplicateMessage": "Aquest problema ja s'ha reportat en un altre problema. El tanquem com a duplicat.\n\n!! Tip: Actualitza la llista de reproducció !!"
 }

@@ -1235,5 +1235,20 @@
   "components.Settings.SonarrModal.animeSeriesType": "Typ anime série",
   "components.Settings.Notifications.NotificationsPushover.deviceDefault": "Výchozí zařízení",
   "components.UserProfile.UserSettings.UserNotificationSettings.deviceDefault": "Výchozí zařízení",
-  "components.Settings.SonarrModal.seriesType": "Typ série"
+  "components.Settings.SonarrModal.seriesType": "Typ série",
+  "components.IssueDetails.predefinedReplies": "Rychlá odpověď",
+  "components.IssueDetails.replyFixedLabel": "Problém vyřešen",
+  "components.IssueDetails.replyFixedMessage": "Nahlášený problém byl vyřešen. Zkontrolujte prosím, zda vše funguje podle očekávání. Pokud problém přetrvává, otevřete prosím nový problém.\n\n!! Tip: Aktualizujte playlist !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Vyšetřování",
+  "components.IssueDetails.replyInvestigatingMessage": "Děkujeme za nahlášení. Problém vyšetřujeme a ozveme se, jakmile budeme mít více informací.\n\n!! Tip: Aktualizujte playlist !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Potřeba více informací",
+  "components.IssueDetails.replyMoreInfoMessage": "Mohli byste prosím poskytnout více podrobností o problému? Například: Jaké zařízení/aplikaci používáte? Kdy k problému dochází?\n\n!! Tip: Aktualizujte playlist !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Známý problém",
+  "components.IssueDetails.replyKnownIssueMessage": "Jedná se o známý problém, na kterém se již pracuje. Dáme vám vědět, jakmile bude vyřešen.\n\n!! Tip: Aktualizujte playlist !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Nelze reprodukovat",
+  "components.IssueDetails.replyNotReproducibleMessage": "Nahlášený problém se nám nepodařilo reprodukovat. Zkontrolujte prosím, zda problém stále přetrvává, a nahlaste ho s dalšími podrobnostmi.\n\n!! Tip: Aktualizujte playlist !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Nově přidáno",
+  "components.IssueDetails.replyNewlyAddedMessage": "Obsah byl nově přidán a měl by být brzy dostupný. Buďte prosím trpěliví.\n\n!! Tip: Aktualizujte playlist !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplikát",
+  "components.IssueDetails.replyDuplicateMessage": "Tento problém již byl nahlášen v jiném problému. Uzavíráme ho jako duplikát.\n\n!! Tip: Aktualizujte playlist !!"
 }

@@ -1237,5 +1237,20 @@
   "components.Settings.SonarrModal.seriesType": "Serietype",
   "components.UserProfile.UserSettings.UserNotificationSettings.sound": "Meldingsgeluid",
   "components.Settings.Notifications.NotificationsPushover.deviceDefault": "Apparaatstandaard",
-  "components.Settings.SettingsJobsCache.plex-refresh-token": "Plex Vernieuwingstoken"
+  "components.Settings.SettingsJobsCache.plex-refresh-token": "Plex Vernieuwingstoken",
+  "components.IssueDetails.predefinedReplies": "Snel antwoord",
+  "components.IssueDetails.replyFixedLabel": "Probleem opgelost",
+  "components.IssueDetails.replyFixedMessage": "Het gemelde probleem is opgelost. Controleer of alles werkt zoals verwacht. Als het probleem aanhoudt, open dan een nieuw probleem.\n\n!! Tip: Playlist bijwerken !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Wordt onderzocht",
+  "components.IssueDetails.replyInvestigatingMessage": "Bedankt voor de melding. We onderzoeken het probleem en nemen contact op zodra we meer informatie hebben.\n\n!! Tip: Playlist bijwerken !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Meer informatie nodig",
+  "components.IssueDetails.replyMoreInfoMessage": "Kun je meer details geven over het probleem? Bijvoorbeeld: Welk apparaat/app gebruik je? Wanneer treedt het probleem op?\n\n!! Tip: Playlist bijwerken !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Bekend probleem",
+  "components.IssueDetails.replyKnownIssueMessage": "Dit is een bekend probleem waaraan al wordt gewerkt. We laten je weten wanneer het is opgelost.\n\n!! Tip: Playlist bijwerken !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Niet reproduceerbaar",
+  "components.IssueDetails.replyNotReproducibleMessage": "We konden het gemelde probleem niet reproduceren. Controleer of het probleem nog steeds bestaat en meld het met meer details.\n\n!! Tip: Playlist bijwerken !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Recent toegevoegd",
+  "components.IssueDetails.replyNewlyAddedMessage": "De content is recent toegevoegd en zou binnenkort beschikbaar moeten zijn. Heb even geduld.\n\n!! Tip: Playlist bijwerken !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplicaat",
+  "components.IssueDetails.replyDuplicateMessage": "Dit probleem is al gemeld in een ander probleem. We sluiten dit als duplicaat.\n\n!! Tip: Playlist bijwerken !!"
 }

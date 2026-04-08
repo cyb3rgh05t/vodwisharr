@@ -1235,5 +1235,20 @@
   "components.Settings.Notifications.NotificationsPushover.deviceDefault": "Enhedsstandard",
   "components.Settings.Notifications.NotificationsPushover.sound": "Notifikationslyd",
   "components.UserProfile.UserSettings.UserNotificationSettings.deviceDefault": "Enhedsstandard",
-  "components.UserProfile.UserSettings.UserNotificationSettings.sound": "Notifikationslyd"
+  "components.UserProfile.UserSettings.UserNotificationSettings.sound": "Notifikationslyd",
+  "components.IssueDetails.predefinedReplies": "Hurtigt svar",
+  "components.IssueDetails.replyFixedLabel": "Problem løst",
+  "components.IssueDetails.replyFixedMessage": "Det rapporterede problem er løst. Kontroller venligst, om alt fungerer som forventet. Hvis problemet fortsætter, åbn venligst en ny sag.\n\n!! Tip: Opdater playliste !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Undersøger",
+  "components.IssueDetails.replyInvestigatingMessage": "Tak for rapporten. Vi undersøger problemet og vender tilbage, så snart vi har mere information.\n\n!! Tip: Opdater playliste !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Flere oplysninger nødvendige",
+  "components.IssueDetails.replyMoreInfoMessage": "Kan du give flere detaljer om problemet? For eksempel: Hvilken enhed/app bruger du? Hvornår opstår problemet?\n\n!! Tip: Opdater playliste !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Kendt problem",
+  "components.IssueDetails.replyKnownIssueMessage": "Dette er et kendt problem, der allerede arbejdes på. Vi giver besked, når det er løst.\n\n!! Tip: Opdater playliste !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Kan ikke genskabes",
+  "components.IssueDetails.replyNotReproducibleMessage": "Vi kunne ikke genskabe det rapporterede problem. Kontroller venligst, om problemet stadig eksisterer, og rapportér med flere detaljer.\n\n!! Tip: Opdater playliste !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Nyligt tilføjet",
+  "components.IssueDetails.replyNewlyAddedMessage": "Indholdet er nyligt tilføjet og bør snart være tilgængeligt. Vær venligst tålmodig.\n\n!! Tip: Opdater playliste !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplikat",
+  "components.IssueDetails.replyDuplicateMessage": "Dette problem er allerede rapporteret i en anden sag. Vi lukker denne som duplikat.\n\n!! Tip: Opdater playliste !!"
 }

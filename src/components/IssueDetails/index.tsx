@@ -69,6 +69,28 @@ const messages = defineMessages({
   nocomments: 'No comments.',
   unknownissuetype: 'Unknown',
   commentplaceholder: 'Add a comment…',
+  predefinedReplies: 'Quick Reply',
+  replyFixedLabel: 'Issue Resolved',
+  replyFixedMessage:
+    'The reported issue has been resolved. Please check if everything works as expected. If the problem persists, please open a new issue.\n\n!! Tip: Update Playlist !!',
+  replyInvestigatingLabel: 'Investigating',
+  replyInvestigatingMessage:
+    'Thank you for the report. We are investigating the issue and will get back to you as soon as we have more information.\n\n!! Tip: Update Playlist !!',
+  replyMoreInfoLabel: 'More Information Needed',
+  replyMoreInfoMessage:
+    'Could you please provide more details about the issue? For example: What device/app are you using? When does the problem occur?\n\n!! Tip: Update Playlist !!',
+  replyKnownIssueLabel: 'Known Issue',
+  replyKnownIssueMessage:
+    'This is a known issue that is already being worked on. We will let you know once it has been resolved.\n\n!! Tip: Update Playlist !!',
+  replyNotReproducibleLabel: 'Cannot Reproduce',
+  replyNotReproducibleMessage:
+    'We were unable to reproduce the reported issue. Please check if the problem still persists and report back with more details.\n\n!! Tip: Update Playlist !!',
+  replyNewlyAddedLabel: 'Newly Added',
+  replyNewlyAddedMessage:
+    'The content has been newly added and should be available shortly. Please be patient.\n\n!! Tip: Update Playlist !!',
+  replyDuplicateLabel: 'Duplicate',
+  replyDuplicateMessage:
+    'This issue has already been reported in another issue. We are closing this one as a duplicate.\n\n!! Tip: Update Playlist !!',
 });
 
 const isMovie = (movie: MovieDetails | TvDetails): movie is MovieDetails => {
@@ -477,6 +499,83 @@ const IssueDetails = () => {
                   return (
                     <Form>
                       <div className="my-6">
+                        <div className="relative mb-2 inline-block">
+                          <select
+                            className="rounded-md border border-gray-600 bg-gray-700 py-1.5 pl-3 pr-8 text-sm text-gray-200 hover:border-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                            value=""
+                            onChange={(e) => {
+                              if (e.target.value) {
+                                setFieldValue('message', e.target.value);
+                              }
+                            }}
+                          >
+                            <option value="">
+                              {intl.formatMessage(messages.predefinedReplies)}
+                            </option>
+                            {[
+                              {
+                                label: intl.formatMessage(
+                                  messages.replyFixedLabel
+                                ),
+                                message: intl.formatMessage(
+                                  messages.replyFixedMessage
+                                ),
+                              },
+                              {
+                                label: intl.formatMessage(
+                                  messages.replyInvestigatingLabel
+                                ),
+                                message: intl.formatMessage(
+                                  messages.replyInvestigatingMessage
+                                ),
+                              },
+                              {
+                                label: intl.formatMessage(
+                                  messages.replyMoreInfoLabel
+                                ),
+                                message: intl.formatMessage(
+                                  messages.replyMoreInfoMessage
+                                ),
+                              },
+                              {
+                                label: intl.formatMessage(
+                                  messages.replyKnownIssueLabel
+                                ),
+                                message: intl.formatMessage(
+                                  messages.replyKnownIssueMessage
+                                ),
+                              },
+                              {
+                                label: intl.formatMessage(
+                                  messages.replyNotReproducibleLabel
+                                ),
+                                message: intl.formatMessage(
+                                  messages.replyNotReproducibleMessage
+                                ),
+                              },
+                              {
+                                label: intl.formatMessage(
+                                  messages.replyNewlyAddedLabel
+                                ),
+                                message: intl.formatMessage(
+                                  messages.replyNewlyAddedMessage
+                                ),
+                              },
+                              {
+                                label: intl.formatMessage(
+                                  messages.replyDuplicateLabel
+                                ),
+                                message: intl.formatMessage(
+                                  messages.replyDuplicateMessage
+                                ),
+                              },
+                            ].map((reply) => (
+                              <option key={reply.label} value={reply.message}>
+                                {reply.label}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
                         <Field
                           id="message"
                           name="message"

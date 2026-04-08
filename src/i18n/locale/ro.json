@@ -506,5 +506,20 @@
   "components.RequestModal.selectmovies": "Alege Filmele",
   "components.RequestModal.selectseason": "Alege Sezoanele",
   "components.ResetPassword.gobacklogin": "Înapoi la pagina de autentificare",
-  "components.RequestModal.requestCancel": "Cererea pentru <strong>{title}</strong> a fost anulată."
+  "components.RequestModal.requestCancel": "Cererea pentru <strong>{title}</strong> a fost anulată.",
+  "components.IssueDetails.predefinedReplies": "Răspuns rapid",
+  "components.IssueDetails.replyFixedLabel": "Problemă rezolvată",
+  "components.IssueDetails.replyFixedMessage": "Problema raportată a fost rezolvată. Vă rugăm să verificați dacă totul funcționează conform așteptărilor. Dacă problema persistă, deschideți o nouă problemă.\n\n!! Tip: Actualizează playlistul !!",
+  "components.IssueDetails.replyInvestigatingLabel": "În curs de investigare",
+  "components.IssueDetails.replyInvestigatingMessage": "Mulțumim pentru raport. Investigăm problema și vă vom contacta când vom avea mai multe informații.\n\n!! Tip: Actualizează playlistul !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Informații suplimentare necesare",
+  "components.IssueDetails.replyMoreInfoMessage": "Puteți furniza mai multe detalii despre problemă? De exemplu: Ce dispozitiv/aplicație utilizați? Când apare problema?\n\n!! Tip: Actualizează playlistul !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Problemă cunoscută",
+  "components.IssueDetails.replyKnownIssueMessage": "Aceasta este o problemă cunoscută la care se lucrează deja. Vă vom informa când va fi rezolvată.\n\n!! Tip: Actualizează playlistul !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Nu poate fi reprodusă",
+  "components.IssueDetails.replyNotReproducibleMessage": "Nu am reușit să reproducem problema raportată. Verificați dacă problema mai există și raportați cu mai multe detalii.\n\n!! Tip: Actualizează playlistul !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Adăugat recent",
+  "components.IssueDetails.replyNewlyAddedMessage": "Conținutul a fost adăugat recent și ar trebui să fie disponibil în curând. Vă rugăm să aveți răbdare.\n\n!! Tip: Actualizează playlistul !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplicat",
+  "components.IssueDetails.replyDuplicateMessage": "Această problemă a fost deja raportată în altă problemă. O închidem ca duplicat.\n\n!! Tip: Actualizează playlistul !!"
 }

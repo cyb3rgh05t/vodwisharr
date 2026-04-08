@@ -1236,5 +1236,20 @@
   "components.Discover.DiscoverSliderEdit.enable": "Перемкнути видимість",
   "components.Discover.DiscoverSliderEdit.deletesuccess": "Повзунок успішно видалено.",
   "components.Discover.DiscoverTv.sortTitleDesc": "Назва (Я-А) за спаданням",
-  "components.Settings.SettingsJobsCache.plex-refresh-token": "токен оновлення Plex"
+  "components.Settings.SettingsJobsCache.plex-refresh-token": "токен оновлення Plex",
+  "components.IssueDetails.predefinedReplies": "Швидка відповідь",
+  "components.IssueDetails.replyFixedLabel": "Проблему вирішено",
+  "components.IssueDetails.replyFixedMessage": "Повідомлену проблему було вирішено. Будь ласка, перевірте, чи все працює як очікувалось. Якщо проблема зберігається, відкрийте нову проблему.\n\n!! Tip: Оновіть плейлист !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Розслідування",
+  "components.IssueDetails.replyInvestigatingMessage": "Дякуємо за повідомлення. Ми досліджуємо проблему і зв'яжемося з вами, коли матимемо більше інформації.\n\n!! Tip: Оновіть плейлист !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Потрібна додаткова інформація",
+  "components.IssueDetails.replyMoreInfoMessage": "Чи могли б ви надати більше деталей щодо проблеми? Наприклад: Який пристрій/додаток ви використовуєте? Коли виникає проблема?\n\n!! Tip: Оновіть плейлист !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Відома проблема",
+  "components.IssueDetails.replyKnownIssueMessage": "Це відома проблема, над якою вже ведеться робота. Ми повідомимо, коли її буде вирішено.\n\n!! Tip: Оновіть плейлист !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Не вдається відтворити",
+  "components.IssueDetails.replyNotReproducibleMessage": "Нам не вдалося відтворити повідомлену проблему. Будь ласка, перевірте, чи проблема досі існує, і повідомте з додатковими деталями.\n\n!! Tip: Оновіть плейлист !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Нещодавно додано",
+  "components.IssueDetails.replyNewlyAddedMessage": "Контент було нещодавно додано і він має бути доступний найближчим часом. Будь ласка, зачекайте.\n\n!! Tip: Оновіть плейлист !!",
+  "components.IssueDetails.replyDuplicateLabel": "Дублікат",
+  "components.IssueDetails.replyDuplicateMessage": "Ця проблема вже була повідомлена в іншій проблемі. Закриваємо як дублікат.\n\n!! Tip: Оновіть плейлист !!"
 }

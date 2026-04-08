@@ -1236,5 +1236,20 @@
   "components.Settings.SonarrModal.animeSeriesType": "Тип аниме-сериала",
   "components.Settings.SonarrModal.seriesType": "Тип сериала",
   "components.UserProfile.UserSettings.UserNotificationSettings.sound": "Звук уведомления",
-  "components.Settings.Notifications.NotificationsPushover.deviceDefault": "Устройство по умолчанию"
+  "components.Settings.Notifications.NotificationsPushover.deviceDefault": "Устройство по умолчанию",
+  "components.IssueDetails.predefinedReplies": "Быстрый ответ",
+  "components.IssueDetails.replyFixedLabel": "Проблема решена",
+  "components.IssueDetails.replyFixedMessage": "Сообщённая проблема была решена. Пожалуйста, проверьте, всё ли работает как ожидалось. Если проблема сохраняется, откройте новую проблему.\n\n!! Tip: Обновите плейлист !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Расследование",
+  "components.IssueDetails.replyInvestigatingMessage": "Спасибо за сообщение. Мы расследуем проблему и свяжемся с вами, как только получим больше информации.\n\n!! Tip: Обновите плейлист !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Требуется дополнительная информация",
+  "components.IssueDetails.replyMoreInfoMessage": "Не могли бы вы предоставить больше деталей о проблеме? Например: Какое устройство/приложение вы используете? Когда возникает проблема?\n\n!! Tip: Обновите плейлист !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Известная проблема",
+  "components.IssueDetails.replyKnownIssueMessage": "Это известная проблема, над которой уже ведётся работа. Мы сообщим, когда она будет решена.\n\n!! Tip: Обновите плейлист !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Не воспроизводится",
+  "components.IssueDetails.replyNotReproducibleMessage": "Нам не удалось воспроизвести сообщённую проблему. Пожалуйста, проверьте, сохраняется ли проблема, и сообщите с дополнительными подробностями.\n\n!! Tip: Обновите плейлист !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Недавно добавлено",
+  "components.IssueDetails.replyNewlyAddedMessage": "Контент был недавно добавлен и скоро должен быть доступен. Пожалуйста, будьте терпеливы.\n\n!! Tip: Обновите плейлист !!",
+  "components.IssueDetails.replyDuplicateLabel": "Дубликат",
+  "components.IssueDetails.replyDuplicateMessage": "Эта проблема уже была сообщена в другой проблеме. Закрываем как дубликат.\n\n!! Tip: Обновите плейлист !!"
 }

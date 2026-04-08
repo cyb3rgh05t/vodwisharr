@@ -1218,5 +1218,20 @@
   "components.Discover.emptywatchlist": "Mídia adicionadas à sua <PlexWatchlistSupportLink>Lista Para Assistir do Plex</PlexWatchlistSupportLink> aparecerão aqui.",
   "components.RequestList.RequestItem.unknowntitle": "Título Desconhecido",
   "components.Selector.searchGenres": "Selecione os gêneros…",
-  "components.Selector.searchKeywords": "Pesquisar palavras-chave…"
+  "components.Selector.searchKeywords": "Pesquisar palavras-chave…",
+  "components.IssueDetails.predefinedReplies": "Resposta rápida",
+  "components.IssueDetails.replyFixedLabel": "Problema resolvido",
+  "components.IssueDetails.replyFixedMessage": "O problema reportado foi resolvido. Por favor, verifique se tudo funciona como esperado. Se o problema persistir, abra um novo problema.\n\n!! Tip: Atualizar lista de reprodução !!",
+  "components.IssueDetails.replyInvestigatingLabel": "A investigar",
+  "components.IssueDetails.replyInvestigatingMessage": "Obrigado pelo reporte. Estamos a investigar o problema e contactá-lo-emos assim que tivermos mais informações.\n\n!! Tip: Atualizar lista de reprodução !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Mais informações necessárias",
+  "components.IssueDetails.replyMoreInfoMessage": "Poderia fornecer mais detalhes sobre o problema? Por exemplo: Que dispositivo/aplicação está a usar? Quando é que o problema ocorre?\n\n!! Tip: Atualizar lista de reprodução !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Problema conhecido",
+  "components.IssueDetails.replyKnownIssueMessage": "Este é um problema conhecido no qual já estamos a trabalhar. Informá-lo-emos quando estiver resolvido.\n\n!! Tip: Atualizar lista de reprodução !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Não reproduzível",
+  "components.IssueDetails.replyNotReproducibleMessage": "Não conseguimos reproduzir o problema reportado. Por favor, verifique se o problema ainda persiste e reporte com mais detalhes.\n\n!! Tip: Atualizar lista de reprodução !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Adicionado recentemente",
+  "components.IssueDetails.replyNewlyAddedMessage": "O conteúdo foi adicionado recentemente e deverá estar disponível em breve. Por favor, tenha paciência.\n\n!! Tip: Atualizar lista de reprodução !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplicado",
+  "components.IssueDetails.replyDuplicateMessage": "Este problema já foi reportado noutro problema. Estamos a fechar como duplicado.\n\n!! Tip: Atualizar lista de reprodução !!"
 }

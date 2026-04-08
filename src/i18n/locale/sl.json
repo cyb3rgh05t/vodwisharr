@@ -1,1 +1,18 @@
-{}
+{
+  "components.IssueDetails.commentplaceholder": "Dodajte komentar…",
+  "components.IssueDetails.predefinedReplies": "Hiter odgovor",
+  "components.IssueDetails.replyFixedLabel": "Težava odpravljena",
+  "components.IssueDetails.replyFixedMessage": "Prijavljena težava je bila odpravljena. Preverite, ali vse deluje po pričakovanjih. Če težava vztraja, odprite novo težavo.\n\n!! Tip: Posodobite seznam predvajanja !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Preiskovanje",
+  "components.IssueDetails.replyInvestigatingMessage": "Hvala za prijavo. Preiskujemo težavo in se bomo oglasili, ko bomo imeli več informacij.\n\n!! Tip: Posodobite seznam predvajanja !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Potrebnih je več informacij",
+  "components.IssueDetails.replyMoreInfoMessage": "Ali lahko navedete več podrobnosti o težavi? Na primer: Katero napravo/aplikacijo uporabljate? Kdaj se težava pojavi?\n\n!! Tip: Posodobite seznam predvajanja !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Znana težava",
+  "components.IssueDetails.replyKnownIssueMessage": "To je znana težava, na kateri se že dela. Obvestili vas bomo, ko bo odpravljena.\n\n!! Tip: Posodobite seznam predvajanja !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Ni mogoče ponoviti",
+  "components.IssueDetails.replyNotReproducibleMessage": "Prijavljene težave nismo uspeli ponoviti. Preverite, ali težava še vedno obstaja, in prijavite z več podrobnostmi.\n\n!! Tip: Posodobite seznam predvajanja !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Nedavno dodano",
+  "components.IssueDetails.replyNewlyAddedMessage": "Vsebina je bila nedavno dodana in bo kmalu na voljo. Prosimo, bodite potrpežljivi.\n\n!! Tip: Posodobite seznam predvajanja !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplikat",
+  "components.IssueDetails.replyDuplicateMessage": "Ta težava je bila že prijavljena v drugi težavi. Zapiramo jo kot duplikat.\n\n!! Tip: Posodobite seznam predvajanja !!"
+}

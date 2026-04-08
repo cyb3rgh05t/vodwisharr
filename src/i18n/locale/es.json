@@ -1237,5 +1237,20 @@
   "components.UserProfile.UserSettings.UserNotificationSettings.deviceDefault": "Dispositivo predeterminado",
   "components.UserProfile.UserSettings.UserNotificationSettings.sound": "Sonido para las notificaciones",
   "components.Settings.Notifications.NotificationsPushover.deviceDefault": "Dispositivo predeterminado",
-  "components.Settings.SettingsJobsCache.plex-refresh-token": "Token de actualización de Plex"
+  "components.Settings.SettingsJobsCache.plex-refresh-token": "Token de actualización de Plex",
+  "components.IssueDetails.predefinedReplies": "Respuesta rápida",
+  "components.IssueDetails.replyFixedLabel": "Problema resuelto",
+  "components.IssueDetails.replyFixedMessage": "El problema reportado ha sido resuelto. Por favor, verifica si todo funciona como se esperaba. Si el problema persiste, abre un nuevo problema.\n\n!! Tip: Actualizar lista de reproducción !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Investigando",
+  "components.IssueDetails.replyInvestigatingMessage": "Gracias por el reporte. Estamos investigando el problema y te informaremos en cuanto tengamos más información.\n\n!! Tip: Actualizar lista de reproducción !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Se necesita más información",
+  "components.IssueDetails.replyMoreInfoMessage": "¿Podrías proporcionar más detalles sobre el problema? Por ejemplo: ¿Qué dispositivo/aplicación estás usando? ¿Cuándo ocurre el problema?\n\n!! Tip: Actualizar lista de reproducción !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Problema conocido",
+  "components.IssueDetails.replyKnownIssueMessage": "Este es un problema conocido en el que ya se está trabajando. Te informaremos cuando se haya resuelto.\n\n!! Tip: Actualizar lista de reproducción !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "No se puede reproducir",
+  "components.IssueDetails.replyNotReproducibleMessage": "No pudimos reproducir el problema reportado. Por favor, verifica si el problema persiste y reporta con más detalles.\n\n!! Tip: Actualizar lista de reproducción !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Añadido recientemente",
+  "components.IssueDetails.replyNewlyAddedMessage": "El contenido ha sido añadido recientemente y debería estar disponible pronto. Por favor, ten paciencia.\n\n!! Tip: Actualizar lista de reproducción !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplicado",
+  "components.IssueDetails.replyDuplicateMessage": "Este problema ya ha sido reportado en otro problema. Lo cerramos como duplicado.\n\n!! Tip: Actualizar lista de reproducción !!"
 }

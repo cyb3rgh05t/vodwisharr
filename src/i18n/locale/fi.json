@@ -34,5 +34,21 @@
   "components.Discover.CreateSlider.providetmdbgenreid": "Anna TMDB Genre ID",
   "components.TitleCard.tmdbid": "TMDB-tunniste",
   "components.RequestCard.tmdbid": "TMDB-tunniste",
-  "components.RequestList.RequestItem.tmdbid": "TMDB-tunniste"
+  "components.RequestList.RequestItem.tmdbid": "TMDB-tunniste",
+  "components.IssueDetails.commentplaceholder": "Lisää kommentti…",
+  "components.IssueDetails.predefinedReplies": "Pikavastaus",
+  "components.IssueDetails.replyFixedLabel": "Ongelma ratkaistu",
+  "components.IssueDetails.replyFixedMessage": "Ilmoitettu ongelma on ratkaistu. Tarkista, toimiiko kaikki odotetulla tavalla. Jos ongelma jatkuu, avaa uusi ongelma.\n\n!! Tip: Päivitä soittolista !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Tutkitaan",
+  "components.IssueDetails.replyInvestigatingMessage": "Kiitos ilmoituksesta. Tutkimme ongelmaa ja palaamme asiaan, kun meillä on lisätietoja.\n\n!! Tip: Päivitä soittolista !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Lisätietoja tarvitaan",
+  "components.IssueDetails.replyMoreInfoMessage": "Voisitko antaa lisätietoja ongelmasta? Esimerkiksi: Mitä laitetta/sovellusta käytät? Milloin ongelma ilmenee?\n\n!! Tip: Päivitä soittolista !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Tunnettu ongelma",
+  "components.IssueDetails.replyKnownIssueMessage": "Tämä on tunnettu ongelma, jota jo käsitellään. Ilmoitamme, kun se on ratkaistu.\n\n!! Tip: Päivitä soittolista !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Ei toistettavissa",
+  "components.IssueDetails.replyNotReproducibleMessage": "Emme pystyneet toistamaan ilmoitettua ongelmaa. Tarkista, esiintyykö ongelma edelleen, ja ilmoita lisätiedoilla.\n\n!! Tip: Päivitä soittolista !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Äskettäin lisätty",
+  "components.IssueDetails.replyNewlyAddedMessage": "Sisältö on äskettäin lisätty ja sen pitäisi olla pian saatavilla. Ole kärsivällinen.\n\n!! Tip: Päivitä soittolista !!",
+  "components.IssueDetails.replyDuplicateLabel": "Kaksoiskappale",
+  "components.IssueDetails.replyDuplicateMessage": "Tämä ongelma on jo ilmoitettu toisessa ongelmassa. Suljemme tämän kaksoiskappaleena.\n\n!! Tip: Päivitä soittolista !!"
 }

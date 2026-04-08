@@ -1236,5 +1236,20 @@
   "components.Settings.SettingsJobsCache.plex-refresh-token": "Token de Atualização do Plex",
   "components.Settings.SonarrModal.animeSeriesType": "Tipo de Série de Anime",
   "components.UserProfile.UserSettings.UserNotificationSettings.deviceDefault": "Dispositivo Padrão",
-  "components.Settings.SonarrModal.seriesType": "Tipo de Série"
+  "components.Settings.SonarrModal.seriesType": "Tipo de Série",
+  "components.IssueDetails.predefinedReplies": "Resposta rápida",
+  "components.IssueDetails.replyFixedLabel": "Problema resolvido",
+  "components.IssueDetails.replyFixedMessage": "O problema relatado foi resolvido. Verifique se tudo está funcionando como esperado. Se o problema persistir, abra um novo problema.\n\n!! Tip: Atualizar playlist !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Investigando",
+  "components.IssueDetails.replyInvestigatingMessage": "Obrigado pelo relato. Estamos investigando o problema e retornaremos assim que tivermos mais informações.\n\n!! Tip: Atualizar playlist !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Mais informações necessárias",
+  "components.IssueDetails.replyMoreInfoMessage": "Você poderia fornecer mais detalhes sobre o problema? Por exemplo: Qual dispositivo/aplicativo você está usando? Quando o problema ocorre?\n\n!! Tip: Atualizar playlist !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Problema conhecido",
+  "components.IssueDetails.replyKnownIssueMessage": "Este é um problema conhecido que já está sendo trabalhado. Avisaremos quando for resolvido.\n\n!! Tip: Atualizar playlist !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Não reproduzível",
+  "components.IssueDetails.replyNotReproducibleMessage": "Não conseguimos reproduzir o problema relatado. Verifique se o problema ainda persiste e reporte com mais detalhes.\n\n!! Tip: Atualizar playlist !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Adicionado recentemente",
+  "components.IssueDetails.replyNewlyAddedMessage": "O conteúdo foi adicionado recentemente e deve estar disponível em breve. Por favor, tenha paciência.\n\n!! Tip: Atualizar playlist !!",
+  "components.IssueDetails.replyDuplicateLabel": "Duplicata",
+  "components.IssueDetails.replyDuplicateMessage": "Este problema já foi relatado em outro problema. Estamos fechando como duplicata.\n\n!! Tip: Atualizar playlist !!"
 }

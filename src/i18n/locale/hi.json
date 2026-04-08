@@ -144,5 +144,21 @@
   "components.Discover.resetwarning": "सभी स्लाइडर्स को डिफ़ॉल्ट रूप से रीसेट करें। यह किसी भी कस्टम स्लाइडर को भी हटा देगा!",
   "components.Discover.tmdbtvgenre": "TMDB श्रृंखला शैली",
   "components.Discover.PlexWatchlistSlider.emptywatchlist": "आपकी <PlexWatchlistSupportLink>Plex वॉचलिस्ट</PlexWatchlistSupportLink> में जोड़ा गया मीडिया यहां दिखाई देगा.",
-  "components.Discover.discover": "खोज"
+  "components.Discover.discover": "खोज",
+  "components.IssueDetails.commentplaceholder": "एक टिप्पणी जोड़ें…",
+  "components.IssueDetails.predefinedReplies": "त्वरित उत्तर",
+  "components.IssueDetails.replyFixedLabel": "समस्या हल हो गई",
+  "components.IssueDetails.replyFixedMessage": "रिपोर्ट की गई समस्या हल हो गई है। कृपया जांचें कि सब कुछ अपेक्षित रूप से काम कर रहा है। यदि समस्या बनी रहती है, तो कृपया एक नई समस्या खोलें।\n\n!! Tip: प्लेलिस्ट अपडेट करें !!",
+  "components.IssueDetails.replyInvestigatingLabel": "जांच जारी",
+  "components.IssueDetails.replyInvestigatingMessage": "रिपोर्ट के लिए धन्यवाद। हम समस्या की जांच कर रहे हैं और जैसे ही हमें अधिक जानकारी मिलेगी, आपको सूचित करेंगे।\n\n!! Tip: प्लेलिस्ट अपडेट करें !!",
+  "components.IssueDetails.replyMoreInfoLabel": "अधिक जानकारी चाहिए",
+  "components.IssueDetails.replyMoreInfoMessage": "क्या आप समस्या के बारे में अधिक विवरण प्रदान कर सकते हैं? उदाहरण के लिए: आप कौन सा डिवाइस/ऐप उपयोग कर रहे हैं? समस्या कब होती है?\n\n!! Tip: प्लेलिस्ट अपडेट करें !!",
+  "components.IssueDetails.replyKnownIssueLabel": "ज्ञात समस्या",
+  "components.IssueDetails.replyKnownIssueMessage": "यह एक ज्ञात समस्या है जिस पर पहले से काम चल रहा है। हल होने पर हम आपको सूचित करेंगे।\n\n!! Tip: प्लेलिस्ट अपडेट करें !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "पुन: उत्पन्न नहीं किया जा सकता",
+  "components.IssueDetails.replyNotReproducibleMessage": "हम रिपोर्ट की गई समस्या को पुन: उत्पन्न नहीं कर पाए। कृपया जांचें कि क्या समस्या अभी भी मौजूद है और अधिक विवरण के साथ रिपोर्ट करें।\n\n!! Tip: प्लेलिस्ट अपडेट करें !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "हाल ही में जोड़ा गया",
+  "components.IssueDetails.replyNewlyAddedMessage": "सामग्री हाल ही में जोड़ी गई है और जल्द ही उपलब्ध होनी चाहिए। कृपया धैर्य रखें।\n\n!! Tip: प्लेलिस्ट अपडेट करें !!",
+  "components.IssueDetails.replyDuplicateLabel": "डुप्लिकेट",
+  "components.IssueDetails.replyDuplicateMessage": "यह समस्या पहले से ही किसी अन्य समस्या में रिपोर्ट की गई है। हम इसे डुप्लिकेट के रूप में बंद कर रहे हैं।\n\n!! Tip: प्लेलिस्ट अपडेट करें !!"
 }

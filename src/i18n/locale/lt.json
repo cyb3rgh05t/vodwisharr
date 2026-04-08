@@ -728,5 +728,20 @@
   "components.PermissionEdit.autoapproveSeriesDescription": "Suteikite automatinį patvirtinimą ne 4K serialų rezervacijoms.",
   "components.Discover.emptywatchlist": "Čia bus rodoma medija, pridėta prie <PlexWatchlistSupportLink> Plex grojaraščio</PlexWatchlistSupportLink>.",
   "components.Discover.PlexWatchlistSlider.emptywatchlist": "Čia bus rodoma į <PlexWatchlistSupportLink> Plex grojaraštyje </PlexWatchlistSupportLink> pridėta medija.",
-  "components.Discover.FilterSlideover.voteCount": "Balsų skaičius nuo {minValue} iki {maxValue}"
+  "components.Discover.FilterSlideover.voteCount": "Balsų skaičius nuo {minValue} iki {maxValue}",
+  "components.IssueDetails.predefinedReplies": "Greitas atsakymas",
+  "components.IssueDetails.replyFixedLabel": "Problema išspręsta",
+  "components.IssueDetails.replyFixedMessage": "Pranešta problema buvo išspręsta. Patikrinkite, ar viskas veikia taip, kaip tikėtasi. Jei problema išlieka, atidarykite naują problemą.\n\n!! Tip: Atnaujinkite grojaraštį !!",
+  "components.IssueDetails.replyInvestigatingLabel": "Tiriama",
+  "components.IssueDetails.replyInvestigatingMessage": "Ačiū už pranešimą. Tiriame problemą ir susisieksime, kai turėsime daugiau informacijos.\n\n!! Tip: Atnaujinkite grojaraštį !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Reikia daugiau informacijos",
+  "components.IssueDetails.replyMoreInfoMessage": "Ar galėtumėte pateikti daugiau informacijos apie problemą? Pavyzdžiui: Kokį įrenginį/programėlę naudojate? Kada atsiranda problema?\n\n!! Tip: Atnaujinkite grojaraštį !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Žinoma problema",
+  "components.IssueDetails.replyKnownIssueMessage": "Tai žinoma problema, su kuria jau dirbama. Pranešime, kai bus išspręsta.\n\n!! Tip: Atnaujinkite grojaraštį !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Nepavyksta atkurti",
+  "components.IssueDetails.replyNotReproducibleMessage": "Nepavyko atkurti praneštos problemos. Patikrinkite, ar problema vis dar egzistuoja, ir praneškite su daugiau detalių.\n\n!! Tip: Atnaujinkite grojaraštį !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Neseniai pridėta",
+  "components.IssueDetails.replyNewlyAddedMessage": "Turinys buvo neseniai pridėtas ir netrukus turėtų būti pasiekiamas. Prašome būti kantrūs.\n\n!! Tip: Atnaujinkite grojaraštį !!",
+  "components.IssueDetails.replyDuplicateLabel": "Dublikatas",
+  "components.IssueDetails.replyDuplicateMessage": "Ši problema jau buvo pranešta kitoje problemoje. Uždarome kaip dublikatą.\n\n!! Tip: Atnaujinkite grojaraštį !!"
 }

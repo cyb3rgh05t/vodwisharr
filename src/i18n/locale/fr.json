@@ -1236,5 +1236,20 @@
   "components.UserProfile.UserSettings.UserNotificationSettings.deviceDefault": "Appareil par défaut",
   "components.UserProfile.UserSettings.UserNotificationSettings.sound": "Son de notification",
   "components.Settings.Notifications.NotificationsPushover.sound": "Son de notification",
-  "components.Settings.SettingsJobsCache.plex-refresh-token": "Rafraîchir le token Plex"
+  "components.Settings.SettingsJobsCache.plex-refresh-token": "Rafraîchir le token Plex",
+  "components.IssueDetails.predefinedReplies": "Réponse rapide",
+  "components.IssueDetails.replyFixedLabel": "Problème résolu",
+  "components.IssueDetails.replyFixedMessage": "Le problème signalé a été résolu. Veuillez vérifier si tout fonctionne comme prévu. Si le problème persiste, veuillez ouvrir un nouveau problème.\n\n!! Tip: Mettre à jour la playlist !!",
+  "components.IssueDetails.replyInvestigatingLabel": "En cours d'investigation",
+  "components.IssueDetails.replyInvestigatingMessage": "Merci pour le signalement. Nous enquêtons sur le problème et reviendrons vers vous dès que nous aurons plus d'informations.\n\n!! Tip: Mettre à jour la playlist !!",
+  "components.IssueDetails.replyMoreInfoLabel": "Plus d'informations nécessaires",
+  "components.IssueDetails.replyMoreInfoMessage": "Pourriez-vous fournir plus de détails sur le problème ? Par exemple : Quel appareil/application utilisez-vous ? Quand le problème se produit-il ?\n\n!! Tip: Mettre à jour la playlist !!",
+  "components.IssueDetails.replyKnownIssueLabel": "Problème connu",
+  "components.IssueDetails.replyKnownIssueMessage": "Il s'agit d'un problème connu sur lequel nous travaillons déjà. Nous vous informerons dès qu'il sera résolu.\n\n!! Tip: Mettre à jour la playlist !!",
+  "components.IssueDetails.replyNotReproducibleLabel": "Non reproductible",
+  "components.IssueDetails.replyNotReproducibleMessage": "Nous n'avons pas pu reproduire le problème signalé. Veuillez vérifier si le problème persiste et signaler avec plus de détails.\n\n!! Tip: Mettre à jour la playlist !!",
+  "components.IssueDetails.replyNewlyAddedLabel": "Récemment ajouté",
+  "components.IssueDetails.replyNewlyAddedMessage": "Le contenu a été récemment ajouté et devrait être disponible prochainement. Veuillez patienter.\n\n!! Tip: Mettre à jour la playlist !!",
+  "components.IssueDetails.replyDuplicateLabel": "Doublon",
+  "components.IssueDetails.replyDuplicateMessage": "Ce problème a déjà été signalé dans un autre problème. Nous le fermons comme doublon.\n\n!! Tip: Mettre à jour la playlist !!"
 }
