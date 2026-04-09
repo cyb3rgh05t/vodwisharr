@@ -1,6 +1,11 @@
 name: Release VODwisharr
 
 on:
+  push:
+    branches:
+      - streamnetvod
+    tags:
+      - 'v*'
   release:
     types: [published]
   workflow_dispatch:
@@ -50,8 +55,8 @@ jobs:
         with:
           images: ghcr.io/${{ env.REPO_NAME_LOWERCASE }} # Image name based on repo owner/name
           tags: |
-            type=semver,pattern={{version}},enable=${{ github.event_name == 'release' }}
-            type=raw,value=latest,enable={{is_default_branch}}
+            type=semver,pattern={{version}},enable=${{ github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v') }}
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/streamnetvod' }}
             type=ref,event=branch
             type=raw,value=${{ github.event.inputs.version }},enable=${{ github.event_name == 'workflow_dispatch' }}
 
