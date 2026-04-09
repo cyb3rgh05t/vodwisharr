@@ -7,6 +7,10 @@ import type { IssueResultsResponse } from '@server/interfaces/api/issueInterface
 import { Permission } from '@server/lib/permissions';
 import logger from '@server/logger';
 import { isAuthenticated } from '@server/middleware/auth';
+import {
+  clearResolvingWithComment,
+  markResolvingWithComment,
+} from '@server/utils/issueResolveState';
 import { Router } from 'express';
 
 const issueRoutes = Router();
@@ -360,7 +364,22 @@ issueRoutes.post<{ issueId: string; status: string }, Issue>(
       issue.status = newStatus;
       issue.modifiedBy = req.user;
 
-      await issueRepository.save(issue);
+      // If a comment message is included with the status change,
+      // add it to the issue and suppress the duplicate comment notification
+      if (req.body.message && typeof req.body.message === 'string') {
+        const comment = new IssueComment({
+          message: req.body.message,
+          user: req.user,
+        });
+        issue.comments = [...issue.comments, comment];
+        markResolvingWithComment(issue.id);
+      }
+
+      try {
+        await issueRepository.save(issue);
+      } finally {
+        clearResolvingWithComment(issue.id);
+      }
 
       return res.status(200).json(issue);
     } catch (e) {

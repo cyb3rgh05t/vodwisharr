@@ -158,9 +158,14 @@ const IssueDetails = () => {
     }
   };
 
-  const updateIssueStatus = async (newStatus: 'open' | 'resolved') => {
+  const updateIssueStatus = async (
+    newStatus: 'open' | 'resolved',
+    message?: string
+  ) => {
     try {
-      await axios.post(`/api/v1/issue/${issueData.id}/${newStatus}`);
+      await axios.post(`/api/v1/issue/${issueData.id}/${newStatus}`, {
+        ...(message ? { message } : {}),
+      });
 
       addToast(intl.formatMessage(messages.toaststatusupdated), {
         appearance: 'success',
@@ -495,6 +500,7 @@ const IssueDetails = () => {
                   values,
                   handleSubmit,
                   setFieldValue,
+                  resetForm,
                 }) => {
                   return (
                     <Form>
@@ -603,10 +609,13 @@ const IssueDetails = () => {
                                   type="button"
                                   buttonType="danger"
                                   onClick={async () => {
-                                    await updateIssueStatus('resolved');
+                                    await updateIssueStatus(
+                                      'resolved',
+                                      values.message || undefined
+                                    );
 
                                     if (values.message) {
-                                      handleSubmit();
+                                      resetForm();
                                     }
                                   }}
                                 >
@@ -624,10 +633,13 @@ const IssueDetails = () => {
                                   type="button"
                                   buttonType="default"
                                   onClick={async () => {
-                                    await updateIssueStatus('open');
+                                    await updateIssueStatus(
+                                      'open',
+                                      values.message || undefined
+                                    );
 
                                     if (values.message) {
-                                      handleSubmit();
+                                      resetForm();
                                     }
                                   }}
                                 >

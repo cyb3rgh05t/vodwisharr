@@ -9,6 +9,7 @@ import notificationManager, { Notification } from '@server/lib/notifications';
 import { Permission } from '@server/lib/permissions';
 import { getSettings } from '@server/lib/settings';
 import logger from '@server/logger';
+import { isResolvingWithComment } from '@server/utils/issueResolveState';
 import { sortBy } from 'lodash';
 import type { EntitySubscriberInterface, InsertEvent } from 'typeorm';
 import { EventSubscriber } from 'typeorm';
@@ -72,7 +73,7 @@ export class IssueCommentSubscriber
         image = `${applicationUrl}${entity.attachmentPath}`;
       }
 
-      if (entity.id !== firstComment.id) {
+      if (entity.id !== firstComment.id && !isResolvingWithComment(issue.id)) {
         // Send notifications to all issue managers
         notificationManager.sendNotification(Notification.ISSUE_COMMENT, {
           event: `Neuer Kommentar zu ${
