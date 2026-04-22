@@ -29,12 +29,12 @@ export class IssueCommentSubscriber
     const { applicationUrl } = getSettings().main;
 
     try {
-      const issue = (
-        await getRepository(IssueComment).findOneOrFail({
-          where: { id: entity.id },
-          relations: { issue: true },
-        })
-      ).issue;
+      const issueComment = await getRepository(IssueComment).findOneOrFail({
+        where: { id: entity.id },
+        relations: { issue: true },
+      });
+
+      const issue = issueComment.issue;
 
       const createdBy = await getRepository(User).findOneOrFail({
         where: { id: issue.createdBy.id },
@@ -68,12 +68,15 @@ export class IssueCommentSubscriber
 
       const [firstComment] = sortBy(issue.comments, 'id');
 
-      // If the comment has an attachment, use it instead of the movie/TV poster
-      if (entity.attachmentPath) {
-        image = `${applicationUrl}${entity.attachmentPath}`;
+      // Use the DB-fetched comment for attachment to ensure the value is reliable
+      if (issueComment.attachmentPath) {
+        image = `${applicationUrl}${issueComment.attachmentPath}`;
       }
 
-      if (entity.id !== firstComment.id && !isResolvingWithComment(issue.id)) {
+      if (
+        issueComment.id !== firstComment.id &&
+        !isResolvingWithComment(issue.id)
+      ) {
         // Send notifications to all issue managers
         notificationManager.sendNotification(Notification.ISSUE_COMMENT, {
           event: `Neuer Kommentar zu ${
@@ -91,7 +94,7 @@ export class IssueCommentSubscriber
           notifySystem: true,
           notifyUser:
             !createdBy.hasPermission(Permission.MANAGE_ISSUES) &&
-            createdBy.id !== entity.user.id
+            createdBy.id !== issueComment.user.id
               ? createdBy
               : undefined,
         });

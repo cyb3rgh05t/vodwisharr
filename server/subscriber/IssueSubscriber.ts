@@ -2,6 +2,7 @@ import TheMovieDb from '@server/api/themoviedb';
 import { IssueStatus, IssueType, IssueTypeName } from '@server/constants/issue';
 import { MediaType } from '@server/constants/media';
 import Issue from '@server/entity/Issue';
+import IssueComment from '@server/entity/IssueComment';
 import notificationManager, { Notification } from '@server/lib/notifications';
 import { Permission } from '@server/lib/permissions';
 import { getSettings } from '@server/lib/settings';
@@ -18,6 +19,32 @@ import { EventSubscriber } from 'typeorm';
 export class IssueSubscriber implements EntitySubscriberInterface<Issue> {
   public listenTo(): typeof Issue {
     return Issue;
+  }
+
+  private getCombinedStatusComment(
+    entity: Issue,
+    type: Notification
+  ): IssueComment | undefined {
+    if (
+      type !== Notification.ISSUE_RESOLVED &&
+      type !== Notification.ISSUE_REOPENED
+    ) {
+      return undefined;
+    }
+
+    const comments = sortBy(entity.comments ?? [], 'id');
+    const latestComment = comments.at(-1);
+    const firstComment = comments[0];
+
+    if (
+      !latestComment ||
+      !firstComment ||
+      latestComment.id === firstComment.id
+    ) {
+      return undefined;
+    }
+
+    return latestComment;
   }
 
   private async sendIssueNotification(entity: Issue, type: Notification) {
@@ -50,9 +77,13 @@ export class IssueSubscriber implements EntitySubscriberInterface<Issue> {
       }
 
       const [firstComment] = sortBy(entity.comments, 'id');
+      const combinedComment = this.getCombinedStatusComment(entity, type);
 
-      // If the first comment has an attachment, use it instead of the movie/TV poster
-      if (firstComment.attachmentPath) {
+      // Prefer the status-update comment attachment when resolving/reopening with
+      // image/comment so Telegram sends a single combined post with that image.
+      if (combinedComment?.attachmentPath) {
+        image = `${applicationUrl}${combinedComment.attachmentPath}`;
+      } else if (firstComment.attachmentPath) {
         image = `${applicationUrl}${firstComment.attachmentPath}`;
       }
 
@@ -93,6 +124,10 @@ export class IssueSubscriber implements EntitySubscriberInterface<Issue> {
               }Problem erneut geöffnet`,
         subject: title,
         message: firstComment.message,
+        comment:
+          combinedComment && combinedComment.message
+            ? combinedComment
+            : undefined,
         issue: entity,
         media: entity.media,
         image,

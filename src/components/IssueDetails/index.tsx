@@ -160,11 +160,17 @@ const IssueDetails = () => {
 
   const updateIssueStatus = async (
     newStatus: 'open' | 'resolved',
-    message?: string
+    message?: string,
+    attachmentPath?: string
   ) => {
     try {
       await axios.post(`/api/v1/issue/${issueData.id}/${newStatus}`, {
-        ...(message ? { message } : {}),
+        ...(message || attachmentPath
+          ? {
+              ...(message ? { message } : {}),
+              ...(attachmentPath ? { attachmentPath } : {}),
+            }
+          : {}),
       });
 
       addToast(intl.formatMessage(messages.toaststatusupdated), {
@@ -611,10 +617,14 @@ const IssueDetails = () => {
                                   onClick={async () => {
                                     await updateIssueStatus(
                                       'resolved',
-                                      values.message || undefined
+                                      values.message || undefined,
+                                      values.attachmentPath || undefined
                                     );
 
-                                    if (values.message) {
+                                    if (
+                                      values.message ||
+                                      values.attachmentPath
+                                    ) {
                                       resetForm();
                                     }
                                   }}
@@ -622,7 +632,7 @@ const IssueDetails = () => {
                                   <CheckCircleIcon />
                                   <span>
                                     {intl.formatMessage(
-                                      values.message
+                                      values.message || values.attachmentPath
                                         ? messages.closeissueandcomment
                                         : messages.closeissue
                                     )}
@@ -635,10 +645,14 @@ const IssueDetails = () => {
                                   onClick={async () => {
                                     await updateIssueStatus(
                                       'open',
-                                      values.message || undefined
+                                      values.message || undefined,
+                                      values.attachmentPath || undefined
                                     );
 
-                                    if (values.message) {
+                                    if (
+                                      values.message ||
+                                      values.attachmentPath
+                                    ) {
                                       resetForm();
                                     }
                                   }}
@@ -646,7 +660,7 @@ const IssueDetails = () => {
                                   <ArrowPathIcon />
                                   <span>
                                     {intl.formatMessage(
-                                      values.message
+                                      values.message || values.attachmentPath
                                         ? messages.reopenissueandcomment
                                         : messages.reopenissue
                                     )}
