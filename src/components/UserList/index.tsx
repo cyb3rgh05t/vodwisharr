@@ -25,6 +25,7 @@ import {
   PencilIcon,
   UserPlusIcon,
 } from '@heroicons/react/24/solid';
+import type { UserResultsResponse } from '@server/interfaces/api/userInterfaces';
 import { hasPermission } from '@server/lib/permissions';
 import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
@@ -80,6 +81,8 @@ const messages = defineMessages({
   localLoginDisabled:
     'The <strong>Enable Local Sign-In</strong> setting is currently disabled.',
   searchUsersPlaceholder: 'Search Users',
+  selectAllPages: 'Select All (All Pages)',
+  selectingUsers: 'Selecting…',
 });
 
 export type Sort = 'created' | 'updated' | 'requests' | 'displayname';
@@ -124,6 +127,7 @@ const UserList = () => {
   });
   const [showBulkEditModal, setShowBulkEditModal] = useState(false);
   const [selectedUsers, setSelectedUsers] = useState<number[]>([]);
+  const [isSelectingAllPages, setIsSelectingAllPages] = useState(false);
 
   useEffect(() => {
     const filterString = window.localStorage.getItem('ul-filter-settings');
@@ -149,19 +153,44 @@ const UserList = () => {
   const isUserPermsEditable = (userId: number) =>
     userId !== 1 && userId !== currentUser?.id;
   const isAllUsersSelected = () => {
+    const selectableUsersOnPage = users.filter((user) =>
+      isUserPermsEditable(user.id)
+    );
+
     return (
-      selectedUsers.length ===
-      users.filter((user) => user.id !== currentUser?.id).length
+      selectableUsersOnPage.length > 0 &&
+      selectableUsersOnPage.every((user) => selectedUsers.includes(user.id))
     );
   };
   const isUserSelected = (userId: number) => selectedUsers.includes(userId);
-  const toggleAllUsers = () => {
-    if (selectedUsers.length >= 0 && selectedUsers.length < users.length - 1) {
-      setSelectedUsers(
-        users.filter((user) => isUserPermsEditable(user.id)).map((u) => u.id)
-      );
-    } else {
+  const toggleAllUsersAcrossPages = async () => {
+    if (isSelectingAllPages) {
+      return;
+    }
+
+    if (selectedUsers.length > 0 && isAllUsersSelected()) {
       setSelectedUsers([]);
+      return;
+    }
+
+    setIsSelectingAllPages(true);
+
+    try {
+      const total = Math.max(pageInfo?.results ?? users.length, 1);
+      const searchQuery = searchString
+        ? encodeURIComponent(searchString)
+        : '%00';
+      const { data } = await axios.get<UserResultsResponse>(
+        `/api/v1/user?take=${total}&skip=0&searchQuery=${searchQuery}&sort=${currentSort}`
+      );
+
+      setSelectedUsers(
+        data.results
+          .filter((user) => isUserPermsEditable(user.id))
+          .map((user) => user.id)
+      );
+    } finally {
+      setIsSelectingAllPages(false);
     }
   };
   const toggleUser = (userId: number) => {
@@ -171,6 +200,10 @@ const UserList = () => {
       setSelectedUsers((users) => [...users, userId]);
     }
   };
+
+  useEffect(() => {
+    setSelectedUsers([]);
+  }, [currentSort, searchString]);
 
   const deleteUser = async () => {
     setDeleting(true);
@@ -536,13 +569,26 @@ const UserList = () => {
             style={{
               paddingRight: searchString.length > 0 ? '1.75rem' : '',
             }}
-            className="block w-full rounded-full border border-gray-600 bg-gray-900 bg-opacity-80 py-2 pl-10 text-white placeholder-gray-300 hover:border-gray-500 focus:border-gray-500 focus:bg-opacity-100 focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-base"
+            className="block w-full rounded-full border border-gray-600 bg-gray-800 py-2 pl-10 text-white placeholder-gray-300 hover:border-gray-500 focus:border-gray-500 focus:bg-gray-800 focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-base"
             autoComplete="off"
             placeholder={intl.formatMessage(messages.searchUsersPlaceholder)}
             onChange={(e) => {
               debounceSetSearchString(e.target.value);
             }}
           />
+        </div>
+        <div className="mt-3 lg:mt-4 lg:ml-3">
+          <Button
+            buttonType="default"
+            onClick={toggleAllUsersAcrossPages}
+            disabled={!users.length || isSelectingAllPages}
+          >
+            <span>
+              {isSelectingAllPages
+                ? intl.formatMessage(messages.selectingUsers)
+                : intl.formatMessage(messages.selectAllPages)}
+            </span>
+          </Button>
         </div>
       </div>
       {!users.length && isLoading ? (
@@ -559,7 +605,7 @@ const UserList = () => {
                     name="selectAll"
                     checked={isAllUsersSelected()}
                     onChange={() => {
-                      toggleAllUsers();
+                      toggleAllUsersAcrossPages();
                     }}
                   />
                 )}

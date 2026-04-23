@@ -110,6 +110,12 @@ interface PublicSettings {
   initialized: boolean;
 }
 
+export interface QuickReplySetting {
+  id: string;
+  label: string;
+  message: string;
+}
+
 interface FullPublicSettings extends PublicSettings {
   applicationTitle: string;
   applicationUrl: string;
@@ -126,6 +132,7 @@ interface FullPublicSettings extends PublicSettings {
   locale: string;
   emailEnabled: boolean;
   newPlexLogin: boolean;
+  quickReplies: QuickReplySetting[];
 }
 
 export interface NotificationAgentConfig {
@@ -177,7 +184,7 @@ export interface NotificationAgentTelegram extends NotificationAgentConfig {
     botUsername?: string;
     botAPI: string;
     chatId: string;
-	messageThreadId: string;
+    messageThreadId: string;
     sendSilently: boolean;
   };
 }
@@ -269,6 +276,7 @@ interface AllSettings {
   public: PublicSettings;
   notifications: NotificationSettings;
   jobs: Record<JobId, JobSettings>;
+  quickReplies: QuickReplySetting[];
 }
 
 const SETTINGS_PATH = process.env.CONFIG_DIRECTORY
@@ -359,7 +367,7 @@ class Settings {
             options: {
               botAPI: '',
               chatId: '',
-			  messageThreadId: '',
+              messageThreadId: '',
               sendSilently: false,
             },
           },
@@ -434,6 +442,7 @@ class Settings {
           schedule: '0 0 5 * * *',
         },
       },
+      quickReplies: [],
     };
     if (initialSettings) {
       this.data = merge(this.data, initialSettings);
@@ -514,7 +523,16 @@ class Settings {
       locale: this.data.main.locale,
       emailEnabled: this.data.notifications.agents.email.enabled,
       newPlexLogin: this.data.main.newPlexLogin,
+      quickReplies: this.data.quickReplies,
     };
+  }
+
+  get quickReplies(): QuickReplySetting[] {
+    return this.data.quickReplies;
+  }
+
+  set quickReplies(data: QuickReplySetting[]) {
+    this.data.quickReplies = data;
   }
 
   get notifications(): NotificationSettings {

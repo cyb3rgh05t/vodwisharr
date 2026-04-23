@@ -1,3 +1,4 @@
+import type { QuickReplySetting } from '@server/lib/settings';
 import type { PaginatedResponse } from './common';
 
 export type LogMessage = {
@@ -37,6 +38,7 @@ export interface PublicSettingsResponse {
   locale: string;
   emailEnabled: boolean;
   newPlexLogin: boolean;
+  quickReplies: QuickReplySetting[];
 }
 
 export interface CacheItem {

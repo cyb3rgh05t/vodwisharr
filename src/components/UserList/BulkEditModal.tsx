@@ -68,6 +68,10 @@ const BulkEditModal = ({
   useEffect(() => {
     if (users) {
       const selectedUsers = users.filter((u) => selectedUserIds.includes(u.id));
+      if (selectedUsers.length === 0) {
+        return;
+      }
+
       const { permissions: allPermissionsEqual } = selectedUsers.reduce(
         ({ permissions: aPerms }, { permissions: bPerms }) => {
           return {

@@ -23,6 +23,7 @@ import { ArrowPathIcon } from '@heroicons/react/24/solid';
 import { IssueStatus } from '@server/constants/issue';
 import { MediaType } from '@server/constants/media';
 import type Issue from '@server/entity/Issue';
+import type { PublicSettingsResponse } from '@server/interfaces/api/settingsInterfaces';
 import type { MovieDetails } from '@server/models/Movie';
 import type { TvDetails } from '@server/models/Tv';
 import axios from 'axios';
@@ -106,6 +107,9 @@ const IssueDetails = () => {
   const { data: issueData, mutate: revalidateIssue } = useSWR<Issue>(
     `/api/v1/issue/${router.query.issueId}`
   );
+  const { data: publicSettings } = useSWR<PublicSettingsResponse>(
+    '/api/v1/settings/public'
+  );
   const { data, error } = useSWR<MovieDetails | TvDetails>(
     issueData?.media.tmdbId
       ? `/api/v1/${issueData.media.mediaType}/${issueData.media.tmdbId}`
@@ -126,6 +130,56 @@ const IssueDetails = () => {
   const issueOption = issueOptions.find(
     (opt) => opt.issueType === issueData?.issueType
   );
+
+  const defaultQuickReplies = [
+    {
+      id: 'fixed',
+      label: intl.formatMessage(messages.replyFixedLabel),
+      message: intl.formatMessage(messages.replyFixedMessage),
+    },
+    {
+      id: 'investigating',
+      label: intl.formatMessage(messages.replyInvestigatingLabel),
+      message: intl.formatMessage(messages.replyInvestigatingMessage),
+    },
+    {
+      id: 'moreInfo',
+      label: intl.formatMessage(messages.replyMoreInfoLabel),
+      message: intl.formatMessage(messages.replyMoreInfoMessage),
+    },
+    {
+      id: 'knownIssue',
+      label: intl.formatMessage(messages.replyKnownIssueLabel),
+      message: intl.formatMessage(messages.replyKnownIssueMessage),
+    },
+    {
+      id: 'notReproducible',
+      label: intl.formatMessage(messages.replyNotReproducibleLabel),
+      message: intl.formatMessage(messages.replyNotReproducibleMessage),
+    },
+    {
+      id: 'newlyAdded',
+      label: intl.formatMessage(messages.replyNewlyAddedLabel),
+      message: intl.formatMessage(messages.replyNewlyAddedMessage),
+    },
+    {
+      id: 'duplicate',
+      label: intl.formatMessage(messages.replyDuplicateLabel),
+      message: intl.formatMessage(messages.replyDuplicateMessage),
+    },
+  ];
+
+  const quickReplies = defaultQuickReplies.map((reply) => {
+    const customReply = publicSettings?.quickReplies?.find(
+      (custom) => custom.id === reply.id
+    );
+
+    return {
+      ...reply,
+      label: customReply?.label || reply.label,
+      message: customReply?.message || reply.message,
+    };
+  });
 
   if (!data && !error) {
     return <LoadingSpinner />;
@@ -504,7 +558,6 @@ const IssueDetails = () => {
                   isValid,
                   isSubmitting,
                   values,
-                  handleSubmit,
                   setFieldValue,
                   resetForm,
                 }) => {
@@ -524,65 +577,8 @@ const IssueDetails = () => {
                             <option value="">
                               {intl.formatMessage(messages.predefinedReplies)}
                             </option>
-                            {[
-                              {
-                                label: intl.formatMessage(
-                                  messages.replyFixedLabel
-                                ),
-                                message: intl.formatMessage(
-                                  messages.replyFixedMessage
-                                ),
-                              },
-                              {
-                                label: intl.formatMessage(
-                                  messages.replyInvestigatingLabel
-                                ),
-                                message: intl.formatMessage(
-                                  messages.replyInvestigatingMessage
-                                ),
-                              },
-                              {
-                                label: intl.formatMessage(
-                                  messages.replyMoreInfoLabel
-                                ),
-                                message: intl.formatMessage(
-                                  messages.replyMoreInfoMessage
-                                ),
-                              },
-                              {
-                                label: intl.formatMessage(
-                                  messages.replyKnownIssueLabel
-                                ),
-                                message: intl.formatMessage(
-                                  messages.replyKnownIssueMessage
-                                ),
-                              },
-                              {
-                                label: intl.formatMessage(
-                                  messages.replyNotReproducibleLabel
-                                ),
-                                message: intl.formatMessage(
-                                  messages.replyNotReproducibleMessage
-                                ),
-                              },
-                              {
-                                label: intl.formatMessage(
-                                  messages.replyNewlyAddedLabel
-                                ),
-                                message: intl.formatMessage(
-                                  messages.replyNewlyAddedMessage
-                                ),
-                              },
-                              {
-                                label: intl.formatMessage(
-                                  messages.replyDuplicateLabel
-                                ),
-                                message: intl.formatMessage(
-                                  messages.replyDuplicateMessage
-                                ),
-                              },
-                            ].map((reply) => (
-                              <option key={reply.label} value={reply.message}>
+                            {quickReplies.map((reply) => (
+                              <option key={reply.id} value={reply.message}>
                                 {reply.label}
                               </option>
                             ))}

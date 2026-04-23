@@ -17,7 +17,11 @@ import cacheManager from '@server/lib/cache';
 import ImageProxy from '@server/lib/imageproxy';
 import { Permission } from '@server/lib/permissions';
 import { plexFullScanner } from '@server/lib/scanners/plex';
-import type { JobId, MainSettings } from '@server/lib/settings';
+import type {
+  JobId,
+  MainSettings,
+  QuickReplySetting,
+} from '@server/lib/settings';
 import { getSettings } from '@server/lib/settings';
 import logger from '@server/logger';
 import { isAuthenticated } from '@server/middleware/auth';
@@ -54,6 +58,24 @@ const filteredMainSettings = (
   return main;
 };
 
+const sanitizeQuickReplies = (quickReplies: unknown): QuickReplySetting[] => {
+  if (!Array.isArray(quickReplies)) {
+    return [];
+  }
+
+  return quickReplies
+    .map((reply) => {
+      const value = reply as Partial<QuickReplySetting>;
+
+      return {
+        id: typeof value.id === 'string' ? value.id.trim() : '',
+        label: typeof value.label === 'string' ? value.label.trim() : '',
+        message: typeof value.message === 'string' ? value.message.trim() : '',
+      };
+    })
+    .filter((reply) => reply.id && reply.label && reply.message);
+};
+
 settingsRoutes.get('/main', (req, res, next) => {
   const settings = getSettings();
 
@@ -83,6 +105,21 @@ settingsRoutes.post('/main/regenerate', (req, res, next) => {
   }
 
   return res.status(200).json(filteredMainSettings(req.user, main));
+});
+
+settingsRoutes.get('/quick-replies', (_req, res) => {
+  const settings = getSettings();
+
+  return res.status(200).json(settings.quickReplies);
+});
+
+settingsRoutes.post('/quick-replies', (req, res) => {
+  const settings = getSettings();
+
+  settings.quickReplies = sanitizeQuickReplies(req.body?.quickReplies);
+  settings.save();
+
+  return res.status(200).json(settings.quickReplies);
 });
 
 settingsRoutes.get('/plex', (_req, res) => {

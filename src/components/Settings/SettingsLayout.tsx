@@ -10,6 +10,7 @@ const messages = defineMessages({
   menuPlexSettings: 'Plex',
   menuServices: 'Services',
   menuNotifications: 'Notifications',
+  menuQuickReplies: 'Quick Replies',
   menuLogs: 'Logs',
   menuJobs: 'Jobs & Cache',
   menuAbout: 'About',
@@ -48,6 +49,11 @@ const SettingsLayout = ({ children }: SettingsLayoutProps) => {
       text: intl.formatMessage(messages.menuNotifications),
       route: '/settings/notifications/email',
       regex: /^\/settings\/notifications/,
+    },
+    {
+      text: intl.formatMessage(messages.menuQuickReplies),
+      route: '/settings/quick-replies',
+      regex: /^\/settings\/quick-replies/,
     },
     {
       text: intl.formatMessage(messages.menuRssFeeds),
