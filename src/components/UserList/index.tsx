@@ -568,8 +568,10 @@ const UserList = () => {
             type="search"
             style={{
               paddingRight: searchString.length > 0 ? '1.75rem' : '',
+              background: 'rgba(170, 170, 170, 0.1)',
+              borderColor: 'rgba(170, 170, 170, 0.15)',
             }}
-            className="block w-full rounded-full border border-gray-600 bg-gray-800 py-2 pl-10 text-white placeholder-gray-300 hover:border-gray-500 focus:border-gray-500 focus:bg-gray-800 focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-base"
+            className="block w-full rounded-full border py-2 pl-10 text-white placeholder-gray-300 hover:border-gray-500 focus:placeholder-gray-400 focus:outline-none focus:ring-0 sm:text-base"
             autoComplete="off"
             placeholder={intl.formatMessage(messages.searchUsersPlaceholder)}
             onChange={(e) => {
