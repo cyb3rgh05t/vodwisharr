@@ -135,6 +135,31 @@ components:
         defaultPermissions:
           type: number
           example: 32
+    QuickReplySetting:
+      type: object
+      properties:
+        id:
+          type: string
+          example: fixed
+        label:
+          type: string
+          example: Issue Resolved
+        message:
+          type: string
+          example: The reported issue has been resolved.
+      required:
+        - id
+        - label
+        - message
+    QuickRepliesSettings:
+      type: object
+      properties:
+        quickReplies:
+          type: array
+          items:
+            $ref: '#/components/schemas/QuickReplySetting'
+      required:
+        - quickReplies
     PlexLibrary:
       type: object
       properties:
@@ -1941,6 +1966,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MainSettings'
+  /settings/quick-replies:
+    get:
+      summary: Get quick replies settings
+      description: Retrieves quick reply templates used in issue details.
+      tags:
+        - settings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QuickReplySetting'
+    post:
+      summary: Update quick replies settings
+      description: Updates quick reply templates.
+      tags:
+        - settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuickRepliesSettings'
+      responses:
+        '200':
+          description: Values were successfully updated
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/QuickReplySetting'
   /settings/plex:
     get:
       summary: Get Plex settings
