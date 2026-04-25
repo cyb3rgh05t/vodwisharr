@@ -146,6 +146,8 @@ const SettingsQuickReplies = () => {
                 appearance: 'success',
               });
             } catch (e) {
+              // eslint-disable-next-line no-console
+              console.error('Quick replies save error:', e);
               addToast(intl.formatMessage(messages.toastSettingsFailure), {
                 autoDismiss: true,
                 appearance: 'error',

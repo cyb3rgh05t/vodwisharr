@@ -113,13 +113,24 @@ settingsRoutes.get('/quick-replies', (_req, res) => {
   return res.status(200).json(settings.quickReplies);
 });
 
-settingsRoutes.post('/quick-replies', (req, res) => {
-  const settings = getSettings();
+settingsRoutes.post('/quick-replies', (req, res, next) => {
+  try {
+    const settings = getSettings();
 
-  settings.quickReplies = sanitizeQuickReplies(req.body?.quickReplies);
-  settings.save();
+    settings.quickReplies = sanitizeQuickReplies(req.body?.quickReplies);
+    settings.save();
 
-  return res.status(200).json(settings.quickReplies);
+    return res.status(200).json(settings.quickReplies);
+  } catch (e) {
+    logger.error('Failed to save quick replies', {
+      label: 'API',
+      errorMessage: (e as Error).message,
+    });
+    return next({
+      status: 500,
+      message: 'Failed to save quick replies.',
+    });
+  }
 });
 
 settingsRoutes.get('/plex', (_req, res) => {
