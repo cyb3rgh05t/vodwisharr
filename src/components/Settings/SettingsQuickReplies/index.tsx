@@ -14,6 +14,8 @@ const messages = defineMessages({
   quickRepliesSettings: 'Quick Reply Settings',
   quickRepliesDescription:
     'Customize the predefined issue comment templates used in the issue detail view.',
+  apiUnavailable:
+    'Quick Replies API is not available on this server build. Please update/redeploy backend.',
   label: 'Label',
   message: 'Message',
   toastSettingsSuccess: 'Quick replies saved successfully!',
@@ -54,7 +56,12 @@ const SettingsQuickReplies = () => {
     data,
     error,
     mutate: revalidate,
-  } = useSWR<QuickReplySetting[]>('/api/v1/settings/quick-replies');
+  } = useSWR<QuickReplySetting[]>('/api/v1/settings/quick-replies', {
+    shouldRetryOnError: false,
+  });
+
+  const isQuickRepliesRouteMissing =
+    axios.isAxiosError(error) && error.response?.status === 404;
 
   const defaultQuickReplies: QuickReplySetting[] = [
     {
@@ -133,12 +140,25 @@ const SettingsQuickReplies = () => {
         <p className="description">
           {intl.formatMessage(messages.quickRepliesDescription)}
         </p>
+        {isQuickRepliesRouteMissing && (
+          <p className="description mt-2 text-red-300">
+            {intl.formatMessage(messages.apiUnavailable)}
+          </p>
+        )}
       </div>
       <div className="section">
         <Formik
           initialValues={initialValues}
           enableReinitialize
           onSubmit={async (values) => {
+            if (isQuickRepliesRouteMissing) {
+              addToast(intl.formatMessage(messages.apiUnavailable), {
+                autoDismiss: true,
+                appearance: 'error',
+              });
+              return;
+            }
+
             try {
               await saveQuickReplies(values.quickReplies);
               addToast(intl.formatMessage(messages.toastSettingsSuccess), {
@@ -217,7 +237,16 @@ const SettingsQuickReplies = () => {
                   buttonType="warning"
                   type="button"
                   className="mr-2"
+                  disabled={isQuickRepliesRouteMissing}
                   onClick={async () => {
+                    if (isQuickRepliesRouteMissing) {
+                      addToast(intl.formatMessage(messages.apiUnavailable), {
+                        autoDismiss: true,
+                        appearance: 'error',
+                      });
+                      return;
+                    }
+
                     try {
                       setFieldValue('quickReplies', defaultQuickReplies);
                       await saveQuickReplies(defaultQuickReplies);
@@ -246,7 +275,9 @@ const SettingsQuickReplies = () => {
                 <Button
                   buttonType="primary"
                   type="submit"
-                  disabled={isSubmitting || !isValid}
+                  disabled={
+                    isSubmitting || !isValid || isQuickRepliesRouteMissing
+                  }
                 >
                   {intl.formatMessage(globalMessages.save)}
                 </Button>
