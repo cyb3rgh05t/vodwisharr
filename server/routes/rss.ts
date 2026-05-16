@@ -73,7 +73,10 @@ const movieToRssItem = (movie: MovieResult): RSS.ItemOptions => {
   };
 };
 
-const tvToRssItem = (tv: TvResult): RSS.ItemOptions => {
+const tvToRssItem = (
+  tv: TvResult,
+  externalIds?: { tvdbId?: number | null; imdbId?: string | null }
+): RSS.ItemOptions => {
   const baseUrl = getBaseUrl();
   const posterUrl = tv.posterPath
     ? `${TMDB_IMAGE_BASE}/w600_and_h900_bestv2${tv.posterPath}`
@@ -85,11 +88,24 @@ const tvToRssItem = (tv: TvResult): RSS.ItemOptions => {
     '',
     `Bewertung: ${tv.voteAverage}/10 (${tv.voteCount} Stimmen)`,
     `Erstausstrahlung: ${tv.firstAirDate || 'Unbekannt'}`,
+    `TMDB ID: ${tv.id}`,
+    externalIds?.tvdbId ? `TVDB ID: ${externalIds.tvdbId}` : '',
+    externalIds?.imdbId ? `IMDB ID: ${externalIds.imdbId}` : '',
     genres ? `Genre-IDs: ${genres}` : '',
     posterUrl ? `Poster: ${posterUrl}` : '',
   ]
     .filter(Boolean)
     .join('\n');
+
+  const customElements: Record<string, string | number>[] = [
+    { 'tmdb:id': tv.id },
+  ];
+  if (externalIds?.tvdbId) {
+    customElements.push({ 'tvdb:id': externalIds.tvdbId });
+  }
+  if (externalIds?.imdbId) {
+    customElements.push({ 'imdb:id': externalIds.imdbId });
+  }
 
   return {
     title: tv.name || tv.originalName,
@@ -98,7 +114,24 @@ const tvToRssItem = (tv: TvResult): RSS.ItemOptions => {
     date: tv.firstAirDate ? new Date(tv.firstAirDate) : new Date(),
     description,
     enclosure: posterUrl ? { url: posterUrl, type: 'image/jpeg' } : undefined,
+    custom_elements: customElements,
   };
+};
+
+const fetchTvExternalIds = async (
+  tmdb: TheMovieDb,
+  tvId: number,
+  language: string
+): Promise<{ tvdbId?: number | null; imdbId?: string | null }> => {
+  try {
+    const details = await tmdb.getTvShow({ tvId, language });
+    return {
+      tvdbId: details.external_ids?.tvdb_id ?? null,
+      imdbId: details.external_ids?.imdb_id ?? null,
+    };
+  } catch {
+    return {};
+  }
 };
 
 const createFeed = (
@@ -142,6 +175,19 @@ rssRoutes.get('/trending', async (req, res, next) => {
       `/api/v1/rss/trending?apikey=${req.query.apikey}&language=${language}`
     );
 
+    const tvIds = data.results
+      .filter((r) => !isPerson(r) && !isCollection(r) && !isMovie(r))
+      .map((r) => r.id);
+    const tvExternalIdsMap = new Map<
+      number,
+      { tvdbId?: number | null; imdbId?: string | null }
+    >();
+    await Promise.all(
+      tvIds.map(async (id) => {
+        tvExternalIdsMap.set(id, await fetchTvExternalIds(tmdb, id, language));
+      })
+    );
+
     for (const result of data.results) {
       if (isPerson(result) || isCollection(result)) continue;
 
@@ -160,7 +206,7 @@ rssRoutes.get('/trending', async (req, res, next) => {
             (m) => m.tmdbId === result.id && m.mediaType === MediaType.TV
           )
         );
-        feed.item(tvToRssItem(mapped));
+        feed.item(tvToRssItem(mapped, tvExternalIdsMap.get(result.id)));
       }
     }
 
@@ -248,15 +294,19 @@ rssRoutes.get('/popular-tv', async (req, res, next) => {
       `/api/v1/rss/popular-tv?apikey=${req.query.apikey}&language=${language}`
     );
 
-    for (const result of data.results) {
+    const externalIdsList = await Promise.all(
+      data.results.map((r) => fetchTvExternalIds(tmdb, r.id, language))
+    );
+
+    data.results.forEach((result, idx) => {
       const mapped = mapTvResult(
         result,
         media.find(
           (m) => m.tmdbId === result.id && m.mediaType === MediaType.TV
         )
       );
-      feed.item(tvToRssItem(mapped));
-    }
+      feed.item(tvToRssItem(mapped, externalIdsList[idx]));
+    });
 
     res.set('Content-Type', 'application/rss+xml; charset=utf-8');
     return res.send(feed.xml({ indent: true }));
@@ -356,15 +406,19 @@ rssRoutes.get('/upcoming-tv', async (req, res, next) => {
       `/api/v1/rss/upcoming-tv?apikey=${req.query.apikey}&language=${language}`
     );
 
-    for (const result of data.results) {
+    const externalIdsList = await Promise.all(
+      data.results.map((r) => fetchTvExternalIds(tmdb, r.id, language))
+    );
+
+    data.results.forEach((result, idx) => {
       const mapped = mapTvResult(
         result,
         media.find(
           (m) => m.tmdbId === result.id && m.mediaType === MediaType.TV
         )
       );
-      feed.item(tvToRssItem(mapped));
-    }
+      feed.item(tvToRssItem(mapped, externalIdsList[idx]));
+    });
 
     res.set('Content-Type', 'application/rss+xml; charset=utf-8');
     return res.send(feed.xml({ indent: true }));
@@ -403,6 +457,7 @@ const tvDetailsToJson = (tv: TmdbTvDetails) => ({
   title: tv.name,
   tmdb_id: tv.id,
   imdb_id: tv.external_ids?.imdb_id || null,
+  tvdb_id: tv.external_ids?.tvdb_id ?? null,
   poster_url: tv.poster_path ? `${TMDB_POSTER_BASE}${tv.poster_path}` : null,
   genres: tv.genres.map((g) => formatGenreName(g.name)),
 });
