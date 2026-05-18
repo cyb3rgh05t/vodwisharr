@@ -446,8 +446,8 @@ const movieDetailsToJson = (movie: TmdbMovieDetails) => ({
 
 const tvDetailsToJson = (tv: TmdbTvDetails) => ({
   title: tv.name,
-  tvdb_id: tv.external_ids?.tvdb_id ?? null,
-  imdb_id: tv.external_ids?.imdb_id || null,
+  tvdbId: tv.external_ids?.tvdb_id ?? null,
+  imdbId: tv.external_ids?.imdb_id || null,
 });
 
 // =====================
