@@ -438,72 +438,86 @@ rssRoutes.get('/upcoming-tv', async (req, res, next) => {
 // JSON Feed Endpoints
 // =============================================
 
-const TMDB_POSTER_BASE = 'http://image.tmdb.org/t/p/w500';
-
-const formatGenreName = (name: string): string =>
-  name.toLowerCase().replace(/ /g, '_');
-
 const movieDetailsToJson = (movie: TmdbMovieDetails) => ({
   title: movie.title,
   tmdb_id: movie.id,
   imdb_id: movie.imdb_id || null,
-  poster_url: movie.poster_path
-    ? `${TMDB_POSTER_BASE}${movie.poster_path}`
-    : null,
-  genres: movie.genres.map((g) => formatGenreName(g.name)),
 });
 
 const tvDetailsToJson = (tv: TmdbTvDetails) => ({
   title: tv.name,
-  tmdb_id: tv.id,
-  imdb_id: tv.external_ids?.imdb_id || null,
   tvdb_id: tv.external_ids?.tvdb_id ?? null,
-  poster_url: tv.poster_path ? `${TMDB_POSTER_BASE}${tv.poster_path}` : null,
-  genres: tv.genres.map((g) => formatGenreName(g.name)),
+  imdb_id: tv.external_ids?.imdb_id || null,
 });
 
 // =====================
-// JSON: Trending
+// JSON: Trending Movies
 // =====================
-rssRoutes.get('/json/trending', async (req, res, next) => {
+rssRoutes.get('/json/trending-movies', async (req, res, next) => {
   try {
     const language = (req.query.language as string) || 'de';
     const tmdb = new TheMovieDb();
-    const data = await tmdb.getAllTrending({ page: 1, language });
+    const data = await tmdb.getMovieTrending({ page: 1 });
 
     const results = await Promise.all(
-      data.results
-        .filter((r) => !isPerson(r) && !isCollection(r))
-        .map(async (result) => {
-          try {
-            if (isMovie(result)) {
-              const details = await tmdb.getMovie({
-                movieId: result.id,
-                language,
-              });
-              return movieDetailsToJson(details);
-            } else {
-              const details = await tmdb.getTvShow({
-                tvId: result.id,
-                language,
-              });
-              return tvDetailsToJson(details);
-            }
-          } catch {
-            return null;
-          }
-        })
+      data.results.map(async (result) => {
+        try {
+          const details = await tmdb.getMovie({
+            movieId: result.id,
+            language,
+          });
+          return movieDetailsToJson(details);
+        } catch {
+          return null;
+        }
+      })
     );
 
     return res.status(200).json(results.filter(Boolean));
   } catch (e) {
-    logger.error('Failed to generate trending JSON feed', {
+    logger.error('Failed to generate trending movies JSON feed', {
       label: 'RSS',
       errorMessage: e.message,
     });
     return next({
       status: 500,
-      message: 'Unable to generate trending JSON feed.',
+      message: 'Unable to generate trending movies JSON feed.',
+    });
+  }
+});
+
+// =====================
+// JSON: Trending TV
+// =====================
+rssRoutes.get('/json/trending-tv', async (req, res, next) => {
+  try {
+    const language = (req.query.language as string) || 'de';
+    const tmdb = new TheMovieDb();
+    const data = await tmdb.getTvTrending({ page: 1 });
+
+    const results = await Promise.all(
+      data.results.map(async (result) => {
+        try {
+          const details = await tmdb.getTvShow({
+            tvId: result.id,
+            language,
+          });
+          return tvDetailsToJson(details);
+        } catch {
+          return null;
+        }
+      })
+    );
+
+    return res.status(200).json(results.filter(Boolean));
+  } catch (e) {
+    logger.error('Failed to generate trending TV JSON feed', {
+      label: 'RSS',
+      errorMessage: e.message,
+    });
+    return next({
+      status: 500,
+      message: 'Unable to generate trending TV JSON feed.',
     });
   }
 });

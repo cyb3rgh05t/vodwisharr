@@ -13,9 +13,13 @@ const messages = defineMessages({
     'Use these RSS feed URLs to subscribe to content updates in your favorite RSS reader. Each URL contains your API key for authentication.',
   jsonfeeds: 'JSON Feeds',
   jsonfeedsDescription:
-    'Use these JSON feed URLs to get structured data with TMDB ID, IMDB ID, poster URL, and genre names.',
+    'Use these JSON feed URLs to get structured data. Movie feeds return title, TMDB ID and IMDB ID. TV feeds return title, TVDB ID and IMDB ID.',
   trending: 'Trending',
   trendingDescription: 'Currently trending movies and TV shows.',
+  trendingMovies: 'Trending Movies',
+  trendingMoviesDescription: 'Currently trending movies.',
+  trendingTv: 'Trending TV Shows',
+  trendingTvDescription: 'Currently trending TV shows.',
   popularMovies: 'Popular Movies',
   popularMoviesDescription: 'The most popular movies right now.',
   popularTv: 'Popular TV Shows',
@@ -98,9 +102,14 @@ const SettingsRss = () => {
 
   const jsonFeeds = [
     {
-      label: intl.formatMessage(messages.trending),
-      description: intl.formatMessage(messages.trendingDescription),
-      path: '/api/v1/rss/json/trending',
+      label: intl.formatMessage(messages.trendingMovies),
+      description: intl.formatMessage(messages.trendingMoviesDescription),
+      path: '/api/v1/rss/json/trending-movies',
+    },
+    {
+      label: intl.formatMessage(messages.trendingTv),
+      description: intl.formatMessage(messages.trendingTvDescription),
+      path: '/api/v1/rss/json/trending-tv',
     },
     {
       label: intl.formatMessage(messages.popularMovies),
