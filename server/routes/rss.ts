@@ -438,17 +438,30 @@ rssRoutes.get('/upcoming-tv', async (req, res, next) => {
 // JSON Feed Endpoints
 // =============================================
 
-const movieDetailsToJson = (movie: TmdbMovieDetails) => ({
-  title: movie.title,
-  tmdb_id: movie.id,
-  imdb_id: movie.imdb_id || null,
-});
+const movieDetailsToJson = (movie: TmdbMovieDetails) => {
+  if (!movie.id) return null;
+  const item: Record<string, string | number> = {
+    title: movie.title,
+    tmdb_id: movie.id,
+  };
+  if (movie.imdb_id) {
+    item.imdb_id = movie.imdb_id;
+  }
+  return item;
+};
 
-const tvDetailsToJson = (tv: TmdbTvDetails) => ({
-  title: tv.name,
-  tvdbId: tv.external_ids?.tvdb_id ?? null,
-  imdbId: tv.external_ids?.imdb_id || null,
-});
+const tvDetailsToJson = (tv: TmdbTvDetails) => {
+  const tvdbId = tv.external_ids?.tvdb_id;
+  if (!tvdbId) return null;
+  const item: Record<string, string | number> = {
+    title: tv.name,
+    tvdbId,
+  };
+  if (tv.external_ids?.imdb_id) {
+    item.imdbId = tv.external_ids.imdb_id;
+  }
+  return item;
+};
 
 // =====================
 // JSON: Trending Movies
