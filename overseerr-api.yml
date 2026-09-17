@@ -5893,6 +5893,39 @@ paths:
       responses:
         '204':
           description: Succesfully removed media item
+  /media/{mediaId}/request-disabled:
+    post:
+      summary: Toggle media request blocking
+      description: Enables or disables request creation for a media item. Requires the ADMIN permission.
+      tags:
+        - media
+      parameters:
+        - in: path
+          name: mediaId
+          description: Media ID
+          required: true
+          example: '1'
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - disabled
+              properties:
+                disabled:
+                  type: boolean
+                  example: true
+      responses:
+        '200':
+          description: Returned media
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaInfo'
   /media/{mediaId}/{status}:
     post:
       summary: Update media status

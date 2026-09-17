@@ -109,12 +109,16 @@ const ManageSlideOver = ({
   };
 
   const toggleRequests = async () => {
-    if (data.mediaInfo) {
-      await axios.post(`/api/v1/media/${data.mediaInfo.id}/request-disabled`, {
-        disabled: !data.mediaInfo.requestDisabled,
-      });
-      revalidate();
-    }
+    const mediaId = data.mediaInfo?.id ?? data.id;
+    const nextDisabled = !(data.mediaInfo?.requestDisabled ?? false);
+
+    await axios.post(`/api/v1/media/${mediaId}/request-disabled`, {
+      disabled: nextDisabled,
+      tmdbId: data.id,
+      mediaType: mediaType,
+    });
+
+    revalidate();
   };
 
   const requests =
@@ -478,7 +482,7 @@ const ManageSlideOver = ({
               </div>
             </div>
           )}
-        {hasPermission(Permission.ADMIN) && data?.mediaInfo && (
+        {hasPermission(Permission.ADMIN) && data && (
           <div>
             <h3 className="mb-2 text-xl font-bold">
               {intl.formatMessage(messages.manageModalAdvanced)}
@@ -488,23 +492,23 @@ const ManageSlideOver = ({
                 onClick={() => toggleRequests()}
                 className="w-full"
                 buttonType={
-                  data.mediaInfo.requestDisabled ? 'success' : 'warning'
+                  data.mediaInfo?.requestDisabled ? 'success' : 'warning'
                 }
               >
-                {data.mediaInfo.requestDisabled ? (
+                {data.mediaInfo?.requestDisabled ? (
                   <LockOpenIcon />
                 ) : (
                   <LockClosedIcon />
                 )}
                 <span>
                   {intl.formatMessage(
-                    data.mediaInfo.requestDisabled
+                    data.mediaInfo?.requestDisabled
                       ? messages.enableRequests
                       : messages.disableRequests
                   )}
                 </span>
               </Button>
-              {data?.mediaInfo.status !== MediaStatus.AVAILABLE && (
+              {data?.mediaInfo?.status !== MediaStatus.AVAILABLE && (
                 <Button
                   onClick={() => markAvailable()}
                   className="w-full"
@@ -520,7 +524,7 @@ const ManageSlideOver = ({
                   </span>
                 </Button>
               )}
-              {data?.mediaInfo.status4k !== MediaStatus.AVAILABLE &&
+              {data?.mediaInfo?.status4k !== MediaStatus.AVAILABLE &&
                 settings.currentSettings.series4kEnabled && (
                   <Button
                     onClick={() => markAvailable(true)}
