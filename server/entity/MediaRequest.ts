@@ -143,6 +143,12 @@ export class MediaRequest {
         mediaType: requestBody.mediaType,
       });
     } else {
+      if (media.requestDisabled) {
+        throw new RequestPermissionError(
+          'Requests for this media are disabled.'
+        );
+      }
+
       if (media.status === MediaStatus.UNKNOWN && !requestBody.is4k) {
         media.status = MediaStatus.PENDING;
       }
@@ -1194,12 +1200,17 @@ export class MediaRequest {
           }Anfrage automatisch genehmigt für ${mediaType}`;
           break;
         case Notification.MEDIA_FAILED:
-          event = `${this.is4k ? '4K ' : ''}Anfrage fehlgeschlagen für ${mediaType}`;
+          event = `${
+            this.is4k ? '4K ' : ''
+          }Anfrage fehlgeschlagen für ${mediaType}`;
           break;
       }
 
       if (this.type === MediaType.MOVIE) {
-        const movie = await tmdb.getMovie({ movieId: media.tmdbId, language: 'de' });
+        const movie = await tmdb.getMovie({
+          movieId: media.tmdbId,
+          language: 'de',
+        });
         notificationManager.sendNotification(type, {
           media,
           request: this,

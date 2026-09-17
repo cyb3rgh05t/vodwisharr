@@ -267,6 +267,7 @@ const RequestButton = ({
 
   // Standard request button
   if (
+    !media?.requestDisabled &&
     (!media || media.status === MediaStatus.UNKNOWN) &&
     hasPermission(
       [
@@ -288,6 +289,7 @@ const RequestButton = ({
       svg: <ArrowDownTrayIcon />,
     });
   } else if (
+    !media?.requestDisabled &&
     mediaType === 'tv' &&
     (!activeRequest || activeRequest.requestedBy.id !== user?.id) &&
     hasPermission([Permission.REQUEST, Permission.REQUEST_TV], {
@@ -310,6 +312,7 @@ const RequestButton = ({
 
   // 4K request button
   if (
+    !media?.requestDisabled &&
     (!media || media.status4k === MediaStatus.UNKNOWN) &&
     hasPermission(
       [
@@ -333,6 +336,7 @@ const RequestButton = ({
       svg: <ArrowDownTrayIcon />,
     });
   } else if (
+    !media?.requestDisabled &&
     mediaType === 'tv' &&
     (!active4kRequest || active4kRequest.requestedBy.id !== user?.id) &&
     hasPermission([Permission.REQUEST_4K, Permission.REQUEST_4K_TV], {

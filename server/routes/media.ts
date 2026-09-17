@@ -144,6 +144,30 @@ mediaRoutes.post<
   }
 );
 
+mediaRoutes.post<{ id: string }, Media>(
+  '/:id/request-disabled',
+  isAuthenticated(Permission.ADMIN),
+  async (req, res, next) => {
+    try {
+      const mediaRepository = getRepository(Media);
+      const media = await mediaRepository.findOne({
+        where: { id: Number(req.params.id) },
+      });
+
+      if (!media) {
+        return next({ status: 404, message: 'Media does not exist.' });
+      }
+
+      media.requestDisabled = Boolean(req.body.disabled);
+      await mediaRepository.save(media);
+
+      return res.status(200).json(media);
+    } catch (e) {
+      next({ status: 500, message: e.message });
+    }
+  }
+);
+
 mediaRoutes.delete(
   '/:id',
   isAuthenticated(Permission.MANAGE_REQUESTS),

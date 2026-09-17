@@ -8,7 +8,12 @@ import RequestBlock from '@app/components/RequestBlock';
 import useSettings from '@app/hooks/useSettings';
 import { Permission, useUser } from '@app/hooks/useUser';
 import globalMessages from '@app/i18n/globalMessages';
-import { Bars4Icon, ServerIcon } from '@heroicons/react/24/outline';
+import {
+  Bars4Icon,
+  LockClosedIcon,
+  LockOpenIcon,
+  ServerIcon,
+} from '@heroicons/react/24/outline';
 import { CheckCircleIcon, DocumentMinusIcon } from '@heroicons/react/24/solid';
 import { IssueStatus } from '@server/constants/issue';
 import { MediaRequestStatus, MediaStatus } from '@server/constants/media';
@@ -27,6 +32,8 @@ const messages = defineMessages({
   manageModalMedia: 'Media',
   manageModalMedia4k: '4K Media',
   manageModalAdvanced: 'Advanced',
+  disableRequests: 'Disable Requests',
+  enableRequests: 'Enable Requests',
   manageModalNoRequests: 'No requests.',
   manageModalClearMedia: 'Clear Data',
   manageModalClearMediaWarning:
@@ -96,6 +103,15 @@ const ManageSlideOver = ({
     if (data.mediaInfo) {
       await axios.post(`/api/v1/media/${data.mediaInfo?.id}/available`, {
         is4k,
+      });
+      revalidate();
+    }
+  };
+
+  const toggleRequests = async () => {
+    if (data.mediaInfo) {
+      await axios.post(`/api/v1/media/${data.mediaInfo.id}/request-disabled`, {
+        disabled: !data.mediaInfo.requestDisabled,
       });
       revalidate();
     }
@@ -468,6 +484,26 @@ const ManageSlideOver = ({
               {intl.formatMessage(messages.manageModalAdvanced)}
             </h3>
             <div className="space-y-2">
+              <Button
+                onClick={() => toggleRequests()}
+                className="w-full"
+                buttonType={
+                  data.mediaInfo.requestDisabled ? 'success' : 'warning'
+                }
+              >
+                {data.mediaInfo.requestDisabled ? (
+                  <LockOpenIcon />
+                ) : (
+                  <LockClosedIcon />
+                )}
+                <span>
+                  {intl.formatMessage(
+                    data.mediaInfo.requestDisabled
+                      ? messages.enableRequests
+                      : messages.disableRequests
+                  )}
+                </span>
+              </Button>
               {data?.mediaInfo.status !== MediaStatus.AVAILABLE && (
                 <Button
                   onClick={() => markAvailable()}
