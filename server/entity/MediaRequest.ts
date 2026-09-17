@@ -143,12 +143,6 @@ export class MediaRequest {
         mediaType: requestBody.mediaType,
       });
     } else {
-      if (media.requestDisabled) {
-        throw new RequestPermissionError(
-          'Requests for this media are disabled.'
-        );
-      }
-
       if (media.status === MediaStatus.UNKNOWN && !requestBody.is4k) {
         media.status = MediaStatus.PENDING;
       }
@@ -156,6 +150,10 @@ export class MediaRequest {
       if (media.status4k === MediaStatus.UNKNOWN && requestBody.is4k) {
         media.status4k = MediaStatus.PENDING;
       }
+    }
+
+    if (media.requestDisabled && !requestUser.hasPermission(Permission.ADMIN)) {
+      throw new RequestPermissionError('Requests for this media are disabled.');
     }
 
     const existing = await requestRepository
