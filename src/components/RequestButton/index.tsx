@@ -7,6 +7,7 @@ import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import {
   CheckIcon,
   InformationCircleIcon,
+  LockClosedIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid';
 import { MediaRequestStatus, MediaStatus } from '@server/constants/media';
@@ -34,6 +35,7 @@ const messages = defineMessages({
     'Approve {requestCount, plural, one {4K Request} other {{requestCount} 4K Requests}}',
   decline4krequests:
     'Decline {requestCount, plural, one {4K Request} other {{requestCount} 4K Requests}}',
+  requestsdisabled: 'Requests Disabled by Admin',
 });
 
 interface ButtonOption {
@@ -266,19 +268,22 @@ const RequestButton = ({
   }
 
   // Standard request button
-  if (
-    !media?.requestDisabled &&
-    (!media || media.status === MediaStatus.UNKNOWN) &&
-    hasPermission(
-      [
-        Permission.REQUEST,
-        mediaType === 'movie'
-          ? Permission.REQUEST_MOVIE
-          : Permission.REQUEST_TV,
-      ],
-      { type: 'or' }
-    )
-  ) {
+  const canRequestStandard = hasPermission(
+    [
+      Permission.REQUEST,
+      mediaType === 'movie' ? Permission.REQUEST_MOVIE : Permission.REQUEST_TV,
+    ],
+    { type: 'or' }
+  );
+  const wantsStandardRequest = !media || media.status === MediaStatus.UNKNOWN;
+  const wantsStandardRequestMore =
+    mediaType === 'tv' &&
+    (!activeRequest || activeRequest.requestedBy.id !== user?.id) &&
+    !!media &&
+    media.status !== MediaStatus.AVAILABLE &&
+    !isShowComplete;
+
+  if (!media?.requestDisabled && wantsStandardRequest && canRequestStandard) {
     buttons.push({
       id: 'request',
       text: intl.formatMessage(globalMessages.request),
@@ -290,14 +295,8 @@ const RequestButton = ({
     });
   } else if (
     !media?.requestDisabled &&
-    mediaType === 'tv' &&
-    (!activeRequest || activeRequest.requestedBy.id !== user?.id) &&
-    hasPermission([Permission.REQUEST, Permission.REQUEST_TV], {
-      type: 'or',
-    }) &&
-    media &&
-    media.status !== MediaStatus.AVAILABLE &&
-    !isShowComplete
+    wantsStandardRequestMore &&
+    canRequestStandard
   ) {
     buttons.push({
       id: 'request-more',
@@ -311,9 +310,7 @@ const RequestButton = ({
   }
 
   // 4K request button
-  if (
-    !media?.requestDisabled &&
-    (!media || media.status4k === MediaStatus.UNKNOWN) &&
+  const canRequest4k =
     hasPermission(
       [
         Permission.REQUEST_4K,
@@ -324,8 +321,17 @@ const RequestButton = ({
       { type: 'or' }
     ) &&
     ((settings.currentSettings.movie4kEnabled && mediaType === 'movie') ||
-      (settings.currentSettings.series4kEnabled && mediaType === 'tv'))
-  ) {
+      (settings.currentSettings.series4kEnabled && mediaType === 'tv'));
+  const wantsRequest4k = !media || media.status4k === MediaStatus.UNKNOWN;
+  const wantsRequest4kMore =
+    mediaType === 'tv' &&
+    (!active4kRequest || active4kRequest.requestedBy.id !== user?.id) &&
+    !!media &&
+    media.status4k !== MediaStatus.AVAILABLE &&
+    !is4kShowComplete &&
+    settings.currentSettings.series4kEnabled;
+
+  if (!media?.requestDisabled && wantsRequest4k && canRequest4k) {
     buttons.push({
       id: 'request4k',
       text: intl.formatMessage(globalMessages.request4k),
@@ -335,18 +341,7 @@ const RequestButton = ({
       },
       svg: <ArrowDownTrayIcon />,
     });
-  } else if (
-    !media?.requestDisabled &&
-    mediaType === 'tv' &&
-    (!active4kRequest || active4kRequest.requestedBy.id !== user?.id) &&
-    hasPermission([Permission.REQUEST_4K, Permission.REQUEST_4K_TV], {
-      type: 'or',
-    }) &&
-    media &&
-    media.status4k !== MediaStatus.AVAILABLE &&
-    !is4kShowComplete &&
-    settings.currentSettings.series4kEnabled
-  ) {
+  } else if (!media?.requestDisabled && wantsRequest4kMore && canRequest4k) {
     buttons.push({
       id: 'request-more-4k',
       text: intl.formatMessage(messages.requestmore4k),
@@ -355,6 +350,23 @@ const RequestButton = ({
         setShowRequest4kModal(true);
       },
       svg: <ArrowDownTrayIcon />,
+    });
+  }
+
+  // Media is admin-blocked: show a disabled notice instead of silently hiding the button
+  const wouldHaveShownRequestButton =
+    (canRequestStandard &&
+      (wantsStandardRequest || wantsStandardRequestMore)) ||
+    (canRequest4k && (wantsRequest4k || wantsRequest4kMore));
+
+  if (media?.requestDisabled && wouldHaveShownRequestButton) {
+    buttons.push({
+      id: 'requests-disabled',
+      text: intl.formatMessage(messages.requestsdisabled),
+      action: () => {
+        // no-op: requests are disabled by an admin for this media
+      },
+      svg: <LockClosedIcon />,
     });
   }
 
@@ -396,10 +408,17 @@ const RequestButton = ({
             <span>{buttonOne.text}</span>
           </>
         }
-        onClick={buttonOne.action}
-        className="ml-2"
+        onClick={
+          buttonOne.id === 'requests-disabled' ? undefined : buttonOne.action
+        }
+        disabled={buttonOne.id === 'requests-disabled'}
+        className={`ml-2 ${
+          buttonOne.id === 'requests-disabled'
+            ? 'cursor-not-allowed opacity-50'
+            : ''
+        }`}
       >
-        {others && others.length > 0
+        {buttonOne.id !== 'requests-disabled' && others && others.length > 0
           ? others.map((button) => (
               <ButtonWithDropdown.Item
                 onClick={button.action}

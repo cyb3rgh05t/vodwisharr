@@ -10,12 +10,16 @@ import { Permission, useUser } from '@app/hooks/useUser';
 import globalMessages from '@app/i18n/globalMessages';
 import { withProperties } from '@app/utils/typeHelpers';
 import { Transition } from '@headlessui/react';
-import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
+import { ArrowDownTrayIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 import { MediaStatus } from '@server/constants/media';
 import type { MediaType } from '@server/models/Search';
 import Link from 'next/link';
 import { Fragment, useCallback, useEffect, useState } from 'react';
-import { useIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
+
+const messages = defineMessages({
+  requestsdisabled: 'Requests Disabled',
+});
 
 interface TitleCardProps {
   id: number;
@@ -28,6 +32,7 @@ interface TitleCardProps {
   status?: MediaStatus;
   canExpand?: boolean;
   inProgress?: boolean;
+  requestDisabled?: boolean;
 }
 
 const TitleCard = ({
@@ -40,6 +45,7 @@ const TitleCard = ({
   mediaType,
   inProgress = false,
   canExpand = false,
+  requestDisabled = false,
 }: TitleCardProps) => {
   const isTouch = useIsTouch();
   const intl = useIntl();
@@ -255,16 +261,30 @@ const TitleCard = ({
                 {showRequestButton &&
                   (!currentStatus || currentStatus === MediaStatus.UNKNOWN) && (
                     <Button
-                      buttonType="primary"
+                      buttonType={requestDisabled ? 'default' : 'primary'}
                       buttonSize="sm"
+                      disabled={requestDisabled}
                       onClick={(e) => {
                         e.preventDefault();
+                        if (requestDisabled) {
+                          return;
+                        }
                         setShowRequestModal(true);
                       }}
                       className="h-7 w-full"
                     >
-                      <ArrowDownTrayIcon />
-                      <span>{intl.formatMessage(globalMessages.request)}</span>
+                      {requestDisabled ? (
+                        <LockClosedIcon />
+                      ) : (
+                        <ArrowDownTrayIcon />
+                      )}
+                      <span>
+                        {intl.formatMessage(
+                          requestDisabled
+                            ? messages.requestsdisabled
+                            : globalMessages.request
+                        )}
+                      </span>
                     </Button>
                   )}
               </div>

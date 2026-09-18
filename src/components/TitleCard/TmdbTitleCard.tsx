@@ -65,6 +65,7 @@ const TmdbTitleCard = ({
       year={title.releaseDate}
       mediaType={'movie'}
       canExpand={canExpand}
+      requestDisabled={title.mediaInfo?.requestDisabled}
     />
   ) : (
     <TitleCard
@@ -77,6 +78,7 @@ const TmdbTitleCard = ({
       year={title.firstAirDate}
       mediaType={'tv'}
       canExpand={canExpand}
+      requestDisabled={title.mediaInfo?.requestDisabled}
     />
   );
 };

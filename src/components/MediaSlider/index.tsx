@@ -106,6 +106,7 @@ const MediaSlider = ({
             year={title.releaseDate}
             mediaType={title.mediaType}
             inProgress={(title.mediaInfo?.downloadStatus ?? []).length > 0}
+            requestDisabled={title.mediaInfo?.requestDisabled}
           />
         );
       case 'tv':
@@ -120,6 +121,7 @@ const MediaSlider = ({
             year={title.firstAirDate}
             mediaType={title.mediaType}
             inProgress={(title.mediaInfo?.downloadStatus ?? []).length > 0}
+            requestDisabled={title.mediaInfo?.requestDisabled}
           />
         );
       case 'person':
