@@ -19,8 +19,8 @@ const CompanyCard = ({ image, url, name }: CompanyCardProps) => {
         } rounded-xl`}
         style={{
           background: isHovered
-            ? 'rgba(170, 170, 170, 0.2)'
-            : 'rgba(170, 170, 170, 0.1)',
+            ? 'rgba(15, 23, 42, 0.45)'
+            : 'rgba(15, 23, 42, 0.3)',
           boxShadow: 'none',
           border: 'none',
         }}
