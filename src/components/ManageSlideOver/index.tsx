@@ -109,14 +109,19 @@ const ManageSlideOver = ({
   };
 
   const toggleRequests = async () => {
-    const mediaId = data.mediaInfo?.id ?? data.id;
     const nextDisabled = !(data.mediaInfo?.requestDisabled ?? false);
 
-    await axios.post(`/api/v1/media/${mediaId}/request-disabled`, {
-      disabled: nextDisabled,
-      tmdbId: data.id,
-      mediaType: mediaType,
-    });
+    if (data.mediaInfo) {
+      await axios.post(`/api/v1/media/${data.mediaInfo.id}/request-disabled`, {
+        disabled: nextDisabled,
+      });
+    } else {
+      await axios.post('/api/v1/media/request-disabled', {
+        disabled: nextDisabled,
+        tmdbId: data.id,
+        mediaType,
+      });
+    }
 
     revalidate();
   };

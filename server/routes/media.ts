@@ -87,37 +87,54 @@ mediaRoutes.get('/', async (req, res, next) => {
   }
 });
 
+mediaRoutes.post<never, Media>(
+  '/request-disabled',
+  isAuthenticated(Permission.ADMIN),
+  async (req, res, next) => {
+    try {
+      const mediaRepository = getRepository(Media);
+      const tmdbId = Number(req.body.tmdbId);
+      const mediaType = req.body.mediaType;
+
+      if (!Number.isFinite(tmdbId) || !mediaType) {
+        return next({
+          status: 400,
+          message: 'tmdbId and mediaType are required.',
+        });
+      }
+
+      let media = await mediaRepository.findOne({
+        where: { tmdbId, mediaType },
+      });
+
+      if (!media) {
+        media = mediaRepository.create({
+          tmdbId,
+          mediaType,
+          status: MediaStatus.UNKNOWN,
+          status4k: MediaStatus.UNKNOWN,
+        });
+      }
+
+      media.requestDisabled = Boolean(req.body.disabled);
+      await mediaRepository.save(media);
+
+      return res.status(200).json(media);
+    } catch (e) {
+      next({ status: 500, message: e.message });
+    }
+  }
+);
+
 mediaRoutes.post<{ id: string }, Media>(
   '/:id/request-disabled',
   isAuthenticated(Permission.ADMIN),
   async (req, res, next) => {
     try {
       const mediaRepository = getRepository(Media);
-      const requestedId = Number(req.params.id);
-      const tmdbId = Number(req.body.tmdbId ?? req.params.id);
-      const mediaType = req.body.mediaType ?? null;
-
-      let media = Number.isFinite(requestedId)
-        ? await mediaRepository.findOne({
-            where: { id: requestedId },
-          })
-        : null;
-
-      if (!media && Number.isFinite(tmdbId) && mediaType) {
-        media = await mediaRepository.findOne({
-          where: { tmdbId, mediaType },
-        });
-      }
-
-      if (!media && Number.isFinite(tmdbId) && mediaType) {
-        media = mediaRepository.create({
-          tmdbId,
-          mediaType,
-          status: MediaStatus.UNKNOWN,
-          status4k: MediaStatus.UNKNOWN,
-          requestDisabled: Boolean(req.body.disabled),
-        });
-      }
+      const media = await mediaRepository.findOne({
+        where: { id: Number(req.params.id) },
+      });
 
       if (!media) {
         return next({ status: 404, message: 'Media does not exist.' });

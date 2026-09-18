@@ -404,7 +404,7 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
                 </Button>
               </Tooltip>
             )}
-          {hasPermission(Permission.MANAGE_REQUESTS) && data.mediaInfo && (
+          {hasPermission(Permission.MANAGE_REQUESTS) && (
             <Tooltip content={intl.formatMessage(messages.managemovie)}>
               <Button
                 buttonType="ghost"

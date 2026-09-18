@@ -5893,6 +5893,39 @@ paths:
       responses:
         '204':
           description: Succesfully removed media item
+  /media/request-disabled:
+    post:
+      summary: Toggle media request blocking (no existing media entry)
+      description: Enables or disables request creation for a movie/series that has no stored media entry yet. Requires the ADMIN permission.
+      tags:
+        - media
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - disabled
+                - tmdbId
+                - mediaType
+              properties:
+                disabled:
+                  type: boolean
+                  example: true
+                tmdbId:
+                  type: number
+                  example: 1
+                mediaType:
+                  type: string
+                  enum: [movie, tv]
+      responses:
+        '200':
+          description: Returned media
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaInfo'
   /media/{mediaId}/request-disabled:
     post:
       summary: Toggle media request blocking

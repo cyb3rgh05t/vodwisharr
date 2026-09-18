@@ -435,7 +435,7 @@ const TvDetails = ({ tv }: TvDetailsProps) => {
                 </Button>
               </Tooltip>
             )}
-          {hasPermission(Permission.MANAGE_REQUESTS) && data.mediaInfo && (
+          {hasPermission(Permission.MANAGE_REQUESTS) && (
             <Tooltip content={intl.formatMessage(messages.manageseries)}>
               <Button
                 buttonType="ghost"
